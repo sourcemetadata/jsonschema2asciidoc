@@ -27,11 +27,11 @@ A simple string.
 - type: `string`
 - defined in this schema
 
-### Pattern [0-9] Type
+### Pattern `[0-9]` Type
 
 `string`
 
-### [0-9] Example
+### Pattern `[0-9]` Example
 
 ```json
 "bar"

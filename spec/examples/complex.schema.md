@@ -222,7 +222,7 @@ Applies to all properties that match the regular expression `int.*`
 - type: `integer`
 - defined in this schema
 
-### Pattern int.\* Type
+### Pattern `int.*` Type
 
 `integer`
 
@@ -236,6 +236,6 @@ Applies to all properties that match the regular expression `str.*`
 - type: `string`
 - defined in this schema
 
-### Pattern str.\* Type
+### Pattern `str.*` Type
 
 `string`

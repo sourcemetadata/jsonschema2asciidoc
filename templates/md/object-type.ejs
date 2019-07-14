@@ -3,27 +3,21 @@
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License. You may obtain a copy
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
- */ %>
-
+ */ -%>
 `object`<%=schema.nullable ? ", nullable," : "" %> with following properties:
 
-<%- include("nested-properties",{outer:schema,props: schema.properties,_:_, nested:true}) %>
-
+<%- include("nested-properties",{outer:schema,props: schema.properties,_:_, nested:true}) -%>
 <% _.keys(schema.properties).sort().forEach(property => {
   const inner = schema.properties[property];
   simpletype(inner)
-  const required = (Array.isArray(schema.required)&&schema.required.indexOf(property)>=0); %>
-
+  const required = (Array.isArray(schema.required)&&schema.required.indexOf(property)>=0); -%>
 <%- include("nested-property",{
-    _:_, 
-    nested:true, 
-    name: property, 
+    _:_,
+    nested:true,
+    name: property,
     schema: inner,
     required: required,
     examples: inner.examples,
     nameSlug:nameSlug
-  }) %>
-
-<%
-});
-%>
+  }) -%>
+<% }) -%>
