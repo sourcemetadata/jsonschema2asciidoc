@@ -1,0 +1,28 @@
+= Readme
+
+== /
+
+* link:./abstract.schema.asciidoc[Abstract] – `https://example.com/schemas/abstract` (Unknown)
+* link:./arrays.schema.asciidoc[Arrays] – `https://example.com/schemas/arrays` (Unknown)
+* link:./complex.schema.asciidoc[Complex References] – `https://example.com/schemas/complex` (Unknown)
+* link:./constants.schema.asciidoc[Constant Types] – `https://example.com/schemas/constants` (Unknown)
+* link:./custom.schema.asciidoc[Custom] – `https://example.com/schemas/custom` (Unknown)
+* link:./deepextending.schema.asciidoc[Deeply Extending] – `https://example.com/schemas/deepextending` (Unknown)
+* link:./definitions.schema.asciidoc[Definitions] – `https://example.com/schemas/definitions` (Unknown)
+* link:./enums.schema.asciidoc[Enumerated] – `https://example.com/schemas/enums` (Unknown)
+* link:./example.schema.asciidoc[Example] – `https://example.com/schemas/example` (Unknown)
+* link:./examples.schema.asciidoc[Examples] – `https://example.com/schemas/examples` (Unknown)
+* link:./extending.schema.asciidoc[Extending] – `https://example.com/schemas/extending` (Unknown)
+* link:./extensible.schema.asciidoc[Extensible] – `https://example.com/schemas/extensible` (Unknown)
+* link:./identifiable.schema.asciidoc[Identifiable] – `https://example.com/schemas/identifiable` (Unknown)
+* link:./join.schema.asciidoc[Join Types] – `https://example.com/schemas/join` (Unknown)
+* link:./nestedobj.schema.asciidoc[Nested Object] – `https://example.com/schemas/nestedobject` (Unknown)
+* link:./pattern.schema.asciidoc[Pattern Properties] – `https://example.com/schemas/pattern` (Unknown)
+* link:./simple.schema.asciidoc[Simple] – `https://example.com/schemas/simple` (Unknown)
+* link:./simpletypes.schema.asciidoc[Simple Types] – `https://example.com/schemas/simpletypes` (Unknown)
+* link:./stabilizing.schema.asciidoc[Stabilizing] – `https://example.com/schemas/stabilizing` (Stabilizing)
+* link:./typearrays.schema.asciidoc[Type Arrays] – `https://example.com/schemas/typearrays` (Unknown)
+
+== /subdir/
+
+* link:./subdir/subdir.schema.asciidoc[Subdir] – `https://example.com/schemas/subdir/subdir` (Unknown)

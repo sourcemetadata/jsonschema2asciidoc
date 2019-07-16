@@ -14,8 +14,8 @@ describe('Header Integration Test', () => {
   });
 
   it('Renders a header with link if link is known', () => {
-    const h = new Header('Foo', '../bar.md');
-    expect(h.renderHeader()).toEqual('[Foo](../bar.md)');
+    const h = new Header('Foo', '../bar.asciidoc');
+    expect(h.renderHeader()).toEqual('link:../bar.asciidoc[Foo]');
   });
 
   it('Renders a header body without link if link is unknown', () => {
@@ -24,8 +24,8 @@ describe('Header Integration Test', () => {
   });
 
   it('Renders a header body with link if link is known', () => {
-    const h = new Header('Foo', '../bar.md', 'Bar', '#bar-md');
-    expect(h.renderValue()).toEqual('[Bar](#bar-md)');
+    const h = new Header('Foo', '../bar.asciidoc', 'Bar', '#bar-asciidoc');
+    expect(h.renderValue()).toEqual('link:#bar-asciidoc[Bar]');
   });
 });
 
@@ -39,13 +39,27 @@ describe('Headers Integration Test', () => {
 
     const h = headers(schema, '/home/lars', '/home/lars/complex.schema.json');
 
-    const result = `| Abstract | Extensible | Status | Identifiable | Custom Properties | Additional Properties | Defined In |
-|----------|------------|--------|--------------|-------------------|-----------------------|------------|
-| Can be instantiated | No | Experimental | No | Forbidden | Permitted | [complex.schema.json](complex.schema.json) |`;
+    const result = `|===
+|Abstract
+|Extensible
+|Status
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|No
+|Experimental
+|No
+|Forbidden
+|Permitted
+|link:complex.schema.json[complex.schema.json]
+|===`;
     expect(h.render()).toEqual(result);
   });
 
-  it('Markdown links should be correct when schema is in a subdir.', () => {
+  it('Asciidoc links should be correct when schema is in a subdir.', () => {
     const schema = {
       additionalProperties: true,
       'meta:extensible': false,
@@ -54,9 +68,23 @@ describe('Headers Integration Test', () => {
 
     const h = headers(schema, '/home/lars', '/home/lars/some/deep/path/complex.schema.json');
 
-    const result = `| Abstract | Extensible | Status | Identifiable | Custom Properties | Additional Properties | Defined In |
-|----------|------------|--------|--------------|-------------------|-----------------------|------------|
-| Can be instantiated | No | Experimental | No | Forbidden | Permitted | [some/deep/path/complex.schema.json](complex.schema.json) |`;
+    const result = `|===
+|Abstract
+|Extensible
+|Status
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|No
+|Experimental
+|No
+|Forbidden
+|Permitted
+|link:complex.schema.json[some/deep/path/complex.schema.json]
+|===`;
     expect(h.render()).toEqual(result);
   });
 

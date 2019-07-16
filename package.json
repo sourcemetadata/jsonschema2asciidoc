@@ -1,10 +1,10 @@
 {
-  "name": "@adobe/jsonschema2md",
+  "name": "@sourcemetadata/jsonschema2asciidoc",
   "description": "Validate and document complex JSON Schemas the easy way.",
   "version": "1.1.1",
   "main": "lib/main.js",
   "bin": {
-    "jsonschema2md": "./cli.js"
+    "jsonschema2asciidoc": "./cli.js"
   },
   "scripts": {
     "semantic-release": "semantic-release",
@@ -26,7 +26,6 @@
     "lodash": "^4.5.0",
     "mkdirp": "^0.5.1",
     "optimist": "^0.6.1",
-    "prettier": "^1.17.0",
     "readdirp": "^2.1.0",
     "valid-url": "1.0.9",
     "winston": "^3.1.0"
@@ -51,10 +50,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adobe/jsonschema2md.git"
+    "url": "https://github.com/sourcemetadata/jsonschema2asciidoc.git"
   },
   "bugs": {
-    "url": "https://github.com/adobe/jsonschema2md/issues"
+    "url": "https://github.com/sourcemetadata/jsonschema2asciidoc/issues"
   },
   "license": "Apache-2.0",
   "author": "",

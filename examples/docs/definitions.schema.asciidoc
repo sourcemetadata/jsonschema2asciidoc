@@ -1,0 +1,136 @@
+---
+template: reference
+foo: bar
+---
+
+= Definitions Schema
+
+....
+https://example.com/schemas/definitions
+....
+
+This is an example of using a `definitions` object within a schema.
+
+It is imported using `allOf` and `$ref`.
+
+And the description has line breaks.
+
+So.
+
+Many.
+
+Line.
+
+Bre-
+
+aks.
+
+____
+Everything is better with a quote.
+____
+
+|===
+|link:../abstract.asciidoc[Abstract]
+|Extensible
+|link:../status.asciidoc[Status]
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|Yes
+|Experimental
+|Yes
+|Forbidden
+|Permitted
+|link:definitions.schema.json[definitions.schema.json]
+|===
+
+= Definitions Properties
+
+|===
+|Property
+|Type
+|Required
+|Nullable
+|Defined by
+
+|xref:id[@id]
+|`string`
+|*Required*
+|No
+|Definitions (this schema)
+
+|xref:id-1[id]
+|`string`
+|*Required*
+|No
+|Definitions (this schema)
+
+|xref:metaid[meta:id]
+|`string`
+|Optional
+|No
+|Definitions (this schema)
+
+|`*`
+|any
+|Additional
+|Yes
+|this schema _allows_ additional properties
+|===
+
+== @id
+
+An `id` with an `@` in front of it. The `@` stands for ``dot com''
+
+`@id`
+
+* is *required*
+* type: `string`
+* defined in this schema
+
+=== @id Type
+
+`string`
+
+* format: `uri` – Uniformous Resource Identifier (according to http://tools.ietf.org/html/rfc3986[RFC3986])
+
+== id
+
+A unique identifier given to every addressable thing.
+
+`id`
+
+* is *required*
+* type: `string`
+* defined in this schema
+
+=== id Type
+
+`string`
+
+* format: `uri-reference` – URI Reference (according to https://tools.ietf.org/html/rfc3986[RFC3986])
+
+== meta:id
+
+An about ids. It is meta. If you are confused, send an email to the address specified in this property value.
+
+`meta:id`
+
+* is optional
+* type: `string`
+* defined in this schema
+
+=== meta:id Type
+
+`string`
+
+* format: `email` – email address (according to https://tools.ietf.org/html/rfc5322[RFC 5322, section 3.4.1])
+
+*All* of the following _requirements_ need to be fulfilled.
+
+==== Requirement 1
+
+* link:[] – `#/definitions/myid`

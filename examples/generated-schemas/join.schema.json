@@ -8,7 +8,7 @@
     "$schema": "http://json-schema.org/draft-06/schema#",
     "$id": "https://example.com/schemas/join",
     "title": "Join Types",
-    "description": "This is an example of a JSON schema with only a join type key. Here a 'oneOf'.",
+    "description": "This is an example of a JSON schema with only a join type key. Here a `oneOf'.",
     "oneOf": [
         {
             "type": "object",

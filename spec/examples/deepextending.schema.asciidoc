@@ -1,0 +1,218 @@
+---
+template: reference
+foo: bar
+---
+
+= Deeply Extending Schema
+
+....
+https://example.com/schemas/deepextending
+....
+
+This is an extending schema. It is extending another extending schema. It pulls `definitions` from other schemas.
+
+|===
+|link:../abstract.asciidoc[Abstract]
+|Extensible
+|link:../status.asciidoc[Status]
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|Yes
+|Experimental
+|Yes
+|Forbidden
+|Permitted
+|link:deepextending.schema.json[deepextending.schema.json]
+|===
+
+== Schema Hierarchy
+
+* Deeply Extending `https://example.com/schemas/deepextending`
+** link:extensible.schema.asciidoc[Extensible] `https://example.com/schemas/extensible`
+** link:definitions.schema.asciidoc[Definitions] `https://example.com/schemas/definitions`
+** link:extending.schema.asciidoc[Extending] `https://example.com/schemas/extending`
+
+= Deeply Extending Properties
+
+|===
+|Property
+|Type
+|Required
+|Nullable
+|Defined by
+
+|xref:id[@id]
+|`string`
+|Optional
+|No
+|link:definitions.schema.asciidoc#id[Definitions]
+
+|xref:bar[bar]
+|`string`
+|Optional
+|No
+|link:extensible.schema.asciidoc#bar[Extensible]
+
+|xref:baz[baz]
+|`string`
+|Optional
+|No
+|link:extending.schema.asciidoc#baz[Extending]
+
+|xref:hey[hey]
+|`string`
+|Optional
+|No
+|Deeply Extending (this schema)
+
+|xref:id-1[id]
+|`string`
+|Optional
+|No
+|link:definitions.schema.asciidoc#id-1[Definitions]
+
+|xref:metaid[meta:id]
+|`string`
+|Optional
+|No
+|link:definitions.schema.asciidoc#metaid[Definitions]
+
+|`*`
+|any
+|Additional
+|Yes
+|this schema _allows_ additional properties
+|===
+
+== @id
+
+An `id` with an `@` in front of it. The `@` stands for ``dot com''
+
+`@id`
+
+* is optional
+* type: `string`
+* defined in link:definitions.schema.asciidoc#id[Definitions]
+
+=== @id Type
+
+`string`
+
+* format: `uri` – Uniformous Resource Identifier (according to http://tools.ietf.org/html/rfc3986[RFC3986])
+
+== bar
+
+A horse walks into it.
+
+`bar`
+
+* is optional
+* type: `string`
+* defined in link:extensible.schema.asciidoc#bar[Extensible]
+
+=== bar Type
+
+`string`
+
+=== bar Examples
+
+[source,json]
+----
+"whoo"
+----
+
+[source,json]
+----
+"hoo"
+----
+
+== baz
+
+=== BAAAZ!
+
+This property has a unique name to demonstrate it’s uniqueness.
+
+`baz`
+
+* is optional
+* type: `string`
+* defined in link:extending.schema.asciidoc#baz[Extending]
+
+=== baz Type
+
+`string`
+
+=== baz Example
+
+[source,json]
+----
+"I'm just a humble example"
+----
+
+== hey
+
+A unique identifier given to every addressable thing.
+
+`hey`
+
+* is optional
+* type: `string`
+* defined in this schema
+
+=== hey Type
+
+`string`
+
+== id
+
+A unique identifier given to every addressable thing.
+
+`id`
+
+* is optional
+* type: `string`
+* defined in link:definitions.schema.asciidoc#id-1[Definitions]
+
+=== id Type
+
+`string`
+
+* format: `uri-reference` – URI Reference (according to https://tools.ietf.org/html/rfc3986[RFC3986])
+
+== meta:id
+
+An about ids. It is meta. If you are confused, send an email to the address specified in this property value.
+
+`meta:id`
+
+* is optional
+* type: `string`
+* defined in link:definitions.schema.asciidoc#metaid[Definitions]
+
+=== meta:id Type
+
+`string`
+
+* format: `email` – email address (according to https://tools.ietf.org/html/rfc5322[RFC 5322, section 3.4.1])
+
+*All* of the following _requirements_ need to be fulfilled.
+
+==== Requirement 1
+
+* link:[] – `https://example.com/schemas/extensible#/definitions/second`
+
+==== Requirement 2
+
+* link:[] – `https://example.com/schemas/definitions#/definitions/myid`
+
+==== Requirement 3
+
+* link:[] – `https://example.com/schemas/extending#/definitions/third`
+
+==== Requirement 4
+
+* link:[] – `#/definitions/fourth`

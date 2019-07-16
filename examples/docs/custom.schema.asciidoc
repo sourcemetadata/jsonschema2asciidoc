@@ -1,0 +1,100 @@
+---
+template: reference
+foo: bar
+---
+
+= Custom Schema
+
+....
+https://example.com/schemas/custom
+....
+
+This is an extensible schema. It has `definitions`, that can be used in other schemas. Additionally, it allows custom properties.
+
+|===
+|link:../abstract.asciidoc[Abstract]
+|Extensible
+|link:../status.asciidoc[Status]
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|Yes
+|Experimental
+|No
+|Allowed
+|Permitted
+|link:custom.schema.json[custom.schema.json]
+|===
+
+= Custom Properties
+
+|===
+|Property
+|Type
+|Required
+|Nullable
+|Defined by
+
+|xref:bar[bar]
+|`string`
+|Optional
+|No
+|Custom (this schema)
+
+|xref:foo[foo]
+|`string`
+|Optional
+|No
+|Custom (this schema)
+
+|`*`
+|any
+|Additional
+|Yes
+|this schema _allows_ additional properties
+|===
+
+== bar
+
+A unique identifier given to every addressable thing.
+
+`bar`
+
+* is optional
+* type: `string`
+* defined in this schema
+
+=== bar Type
+
+`string`
+
+== foo
+
+A unique identifier given to every addressable thing.
+
+`foo`
+
+* is optional
+* type: `string`
+* defined in this schema
+
+=== foo Type
+
+`string`
+
+*All* of the following _requirements_ need to be fulfilled.
+
+==== Requirement 1
+
+* link:[] – `https://ns.adobe.com/xdm/common/extensible.schema.json#/definitions/@context`
+
+==== Requirement 2
+
+* link:[] – `#/definitions/first`
+
+==== Requirement 3
+
+* link:[] – `#/definitions/second`

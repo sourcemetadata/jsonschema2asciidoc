@@ -5,16 +5,16 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-var markdownWriter = require('../../lib/markdownWriter');
+var asciidocWriter = require('../../lib/asciidocWriter');
 var ejs = require('ejs');
 
 describe('writeFiles module', () => {
-  describe('generateMarkdown method', () => {
+  describe('generateAsciidoc method', () => {
     beforeEach(() => {
       spyOn(ejs, 'renderFile');
     });
     it('should invoke ejs.renderFile with the topSchema ejs template', () => {
-      markdownWriter('somefile.schema.json', { '$id': 'myschema', 'my':'schema' }, 'some/path');
+      asciidocWriter('somefile.schema.json', { '$id': 'myschema', 'my':'schema' }, 'some/path');
       var renderArgs = ejs.renderFile.calls.argsFor(0);
       expect(renderArgs);
     });

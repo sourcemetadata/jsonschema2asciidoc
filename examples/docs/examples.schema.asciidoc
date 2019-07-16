@@ -1,0 +1,123 @@
+---
+template: reference
+foo: bar
+---
+
+= Examples Schema
+
+....
+https://example.com/schemas/examples
+....
+
+This is an example schema with _multiple_ examples. Too many examples? There can never be too many examples!
+
+|===
+|link:../abstract.asciidoc[Abstract]
+|Extensible
+|link:../status.asciidoc[Status]
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|No
+|Experimental
+|No
+|Forbidden
+|Permitted
+|link:examples.schema.json[examples.schema.json]
+|===
+
+== Examples Examples
+
+[source,json]
+----
+{
+  "foo": "bi",
+  "bar": "bu"
+}
+----
+
+[source,json]
+----
+{
+  "foo": "zip",
+  "bar": "zap"
+}
+----
+
+= Examples Properties
+
+|===
+|Property
+|Type
+|Required
+|Nullable
+|Defined by
+
+|xref:bar[bar]
+|`string`
+|*Required*
+|No
+|Examples (this schema)
+
+|xref:foo[foo]
+|`string`
+|Optional
+|No
+|Examples (this schema)
+
+|`*`
+|any
+|Additional
+|Yes
+|this schema _allows_ additional properties
+|===
+
+== bar
+
+A simple string.
+
+`bar`
+
+* is *required*
+* type: `string`
+* defined in this schema
+
+=== bar Type
+
+`string`
+
+=== bar Examples
+
+[source,json]
+----
+"bar"
+----
+
+[source,json]
+----
+"baz"
+----
+
+== foo
+
+A simple string.
+
+`foo`
+
+* is optional
+* type: `string`
+* defined in this schema
+
+=== foo Type
+
+`string`
+
+=== foo Example
+
+[source,json]
+----
+"bar"
+----

@@ -9,7 +9,7 @@
     "$id": "https://example.com/schemas/examples",
     "title": "Examples",
     "type": "object",
-    "description": "This is an example schema with *multiple* examples. Too many examples? There can never be too many examples!",
+    "description": "This is an example schema with _multiple_ examples. Too many examples? There can never be too many examples!",
     "properties": {
         "foo": {
             "type": "string",

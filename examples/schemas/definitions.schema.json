@@ -20,7 +20,7 @@
         "@id": {
           "type": "string",
           "format": "uri",
-          "description": "An `id` with an `@` in front of it. The `@` stands for \"dot com\""
+          "description": "An `id` with an `@` in front of it. The `@` stands for ``dot com''"
         },
         "meta:id": {
           "type": "string",

@@ -19,7 +19,7 @@ var readSchemaFile = require('./lib/readSchemaFile');
 
 // parse/process command line arguments
 var argv = require('optimist')
-  .usage('Generate Markdown documentation from JSON Schema.\n\nUsage: $0')
+  .usage('Generate Asciidoc documentation from JSON Schema.\n\nUsage: $0')
   .demand('d')
   .alias('d', 'input')
   // TODO: is baseURL still a valid parameter?
@@ -28,7 +28,7 @@ var argv = require('optimist')
   .describe('o', 'path to output directory')
   .default('o', path.resolve(path.join('.', 'out')))
   .alias('m', 'meta')
-  .describe('m', 'add metadata elements to .md files Eg -m template=reference. Multiple values can be added by repeating the flag Eg: -m template=reference -m hide-nav=true')
+  .describe('m', 'add metadata elements to .asciidoc files Eg -m template=reference. Multiple values can be added by repeating the flag Eg: -m template=reference -m hide-nav=true')
   .alias('s', 'metaSchema')
   .describe('s', 'Custom meta schema path to validate schemas')
   .alias('x', 'schema-out')
@@ -39,8 +39,8 @@ var argv = require('optimist')
   .describe('v', 'JSON Schema Draft version to use. Supported: 04, 06, 07 (default)')
   .alias('v', 'draft')
   .default('v', '07')
-  .describe('n', 'Do not generate a README.md file in the output directory')
-  .describe('link-*', 'Add this file as a link the explain the * attribute, e.g. --link-abstract=abstract.md')
+  .describe('n', 'Do not generate a README.asciidoc file in the output directory')
+  .describe('link-*', 'Add this file as a link the explain the * attribute, e.g. --link-abstract=abstract.asciidoc')
   .check(function(args) {
     if (!fs.existsSync(args.input)) {
       throw 'Input file "' + args.input + '" does not exist!';
@@ -142,7 +142,7 @@ if (target.isDirectory()) {
       ajv.addSchema(require(schemaPath), schemaPath);
       Schema.setAjv(ajv);
       Schema.setSchemaPathMap(schemaPathMap);
-      logger.info('finished reading %s, beginning processing....', schemaPath);
+      logger.info('finished reading %s, beginning processing...', schemaPath);
       return Schema.process(schemaMap, schemaPath, outDir, schemaDir, metaElements, false, docs);
     })
     .then(() => {

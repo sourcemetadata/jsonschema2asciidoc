@@ -43,7 +43,7 @@
                 "bag": "holding device",
                 "bah": "humbug!",
                 "bam": "a loud sound",
-                "ban": "don't do this",
+                "ban": "don’t do this",
                 "bap": "a British soft bread roll",
                 "bas": "from ancient Egyptian religion, an aspect of the soul",
                 "bat": "…out of hell",
@@ -99,16 +99,16 @@
         },
         "interger_unconstrained": {
             "type": "integer",
-            "description": "Just a whole number. I don't like fractions."
+            "description": "Just a whole number. I don’t like fractions."
         },
         "interger_constrained": {
             "type": "integer",
-            "description": "Just a whole number. I don't like fractions. Don't get too small",
+            "description": "Just a whole number. I don’t like fractions. Don’t get too small",
             "minimum": 10
         },
         "number_constrained": {
             "type": "number",
-            "description": "Just a number. Don't get too big.",
+            "description": "Just a number. Don’t get too big.",
             "exclusiveMaximum": 10
         },
         "integer_threes": {

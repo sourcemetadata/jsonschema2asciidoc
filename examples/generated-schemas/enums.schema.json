@@ -7,7 +7,7 @@
     ],
     "$schema": "http://json-schema.org/draft-06/schema#",
     "$id": "https://example.com/schemas/enums",
-    "title": "Enumerated ",
+    "title": "Enumerated",
     "type": "object",
     "description": "This is an example schema with examples for properties with enum values",
     "properties": {

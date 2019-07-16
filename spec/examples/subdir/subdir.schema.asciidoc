@@ -1,0 +1,74 @@
+---
+template: reference
+foo: bar
+---
+
+= Subdir Schema
+
+....
+https://example.com/schemas/subdir/subdir
+....
+
+A schema in a sub directory
+
+|===
+|link:../../abstract.asciidoc[Abstract]
+|Extensible
+|link:../../status.asciidoc[Status]
+|Identifiable
+|Custom Properties
+|Additional Properties
+|Defined In
+
+|Can be instantiated
+|Yes
+|Experimental
+|No
+|Forbidden
+|Permitted
+|link:subdir.schema.json[subdir/subdir.schema.json]
+|===
+
+= Subdir Properties
+
+|===
+|Property
+|Type
+|Required
+|Nullable
+|Defined by
+
+|xref:id[id]
+|`string`
+|Optional
+|No
+|Subdir (this schema)
+
+|`*`
+|any
+|Additional
+|Yes
+|this schema _allows_ additional properties
+|===
+
+== id
+
+A unique identifier given to every addressable thing.
+
+`id`
+
+* is optional
+* type: `string`
+* defined in this schema
+
+=== id Type
+
+`string`
+
+* format: `uri` – Uniformous Resource Identifier (according to http://tools.ietf.org/html/rfc3986[RFC3986])
+
+*All* of the following _requirements_ need to be fulfilled.
+
+==== Requirement 1
+
+* link:[] – `#/definitions/content`

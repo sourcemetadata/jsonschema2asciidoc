@@ -14,7 +14,7 @@ beforeEach(function() {
 
 describe('Compare results', () => {
 
-  it('Run jsonschema2md for custom file extension', done => {
+  it('Run jsonschema2asciidoc for custom file extension', done => {
     const ls = spawn('node', [
       'cli.js',
       '-d',
@@ -34,7 +34,7 @@ describe('Compare results', () => {
   });
 
 
-  it('Run jsonschema2md on example schemas', done => {
+  it('Run jsonschema2asciidoc on example schemas', done => {
     const ls = spawn('node', [
       'cli.js',
       '-d',
@@ -48,9 +48,9 @@ describe('Compare results', () => {
       '-m',
       'foo=bar',
       '--link-abstract',
-      'abstract.md',
+      'abstract.asciidoc',
       '--link-status',
-      'status.md',
+      'status.asciidoc',
       '-v', '06'
     ]);
     ls.on('close', code => {
