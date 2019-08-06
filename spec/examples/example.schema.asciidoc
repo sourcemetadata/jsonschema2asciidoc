@@ -12,13 +12,7 @@ https://example.com/schemas/example
 This is an example schema with examples. Too many examples? There can never be too many examples!
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -42,11 +36,7 @@ This is an example schema with examples. Too many examples? There can never be t
 = Example Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:bar[bar]
 |`string`

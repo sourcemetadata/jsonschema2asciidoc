@@ -40,13 +40,7 @@ describe('Headers Integration Test', () => {
     const h = headers(schema, '/home/lars', '/home/lars/complex.schema.json');
 
     const result = `|===
-|Abstract
-|Extensible
-|Status
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|Abstract |Extensible |Status |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -69,13 +63,7 @@ describe('Headers Integration Test', () => {
     const h = headers(schema, '/home/lars', '/home/lars/some/deep/path/complex.schema.json');
 
     const result = `|===
-|Abstract
-|Extensible
-|Status
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|Abstract |Extensible |Status |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No

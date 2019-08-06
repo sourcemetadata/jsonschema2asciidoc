@@ -30,13 +30,7 @@ Everything is better with a quote.
 ____
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |Yes
@@ -50,11 +44,7 @@ ____
 = Definitions Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:id[@id]
 |`string`

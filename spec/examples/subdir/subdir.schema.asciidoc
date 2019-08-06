@@ -12,13 +12,7 @@ https://example.com/schemas/subdir/subdir
 A schema in a sub directory
 
 |===
-|link:../../abstract.asciidoc[Abstract]
-|Extensible
-|link:../../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../../abstract.asciidoc[Abstract] |Extensible |link:../../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |Yes
@@ -32,11 +26,7 @@ A schema in a sub directory
 = Subdir Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:id[id]
 |`string`

@@ -12,13 +12,7 @@ https://example.com/schemas/abstract
 This is an abstract schema. It has `definitions`, but does not declare any properties
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Cannot be instantiated
 |Yes
@@ -32,9 +26,7 @@ This is an abstract schema. It has `definitions`, but does not declare any prope
 = Abstract Definitions
 
 |===
-|Property
-|Type
-|Group
+|Property |Type |Group
 
 |xref:bar[bar]
 |`string`

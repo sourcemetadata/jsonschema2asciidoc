@@ -12,13 +12,7 @@ https://example.com/schemas/identifiable
 This is a _very_ simple example of a JSON schema. There is only one property.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -32,11 +26,7 @@ This is a _very_ simple example of a JSON schema. There is only one property.
 = Identifiable Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:id[@id]
 |`string`

@@ -12,13 +12,7 @@ https://example.com/schemas/extending
 This is an extending schema. It pulls `definitions` from other schemas.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |Yes
@@ -38,11 +32,7 @@ This is an extending schema. It pulls `definitions` from other schemas.
 = Extending Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:id[@id]
 |`string`

@@ -9,14 +9,7 @@
 
 <% const hasDefault = _.keys(props).filter(property => _.has(props, property + '.default')).length > 0; -%>
 |===
-|Property
-|Type
-|Required
-|Nullable
-<% if(hasDefault) { -%>
-|Default
-<% } -%>
-|Defined by
+|Property |Type |Required |Nullable<% if(hasDefault) { %> |Default<% } -%> |Defined by
 <% _.keys(props).sort().forEach(property => {
   const schema = props[property]; -%>
 

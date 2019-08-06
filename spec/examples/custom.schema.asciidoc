@@ -12,13 +12,7 @@ https://example.com/schemas/custom
 This is an extensible schema. It has `definitions`, that can be used in other schemas. Additionally, it allows custom properties.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |Yes
@@ -32,11 +26,7 @@ This is an extensible schema. It has `definitions`, that can be used in other sc
 = Custom Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:bar[bar]
 |`string`

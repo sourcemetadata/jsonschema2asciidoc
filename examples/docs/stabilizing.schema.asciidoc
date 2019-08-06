@@ -12,13 +12,7 @@ https://example.com/schemas/stabilizing
 This is a schema which is currently in the `stabilizing` status.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -32,11 +26,7 @@ This is a schema which is currently in the `stabilizing` status.
 = Stabilizing Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:id[id]
 |`string`

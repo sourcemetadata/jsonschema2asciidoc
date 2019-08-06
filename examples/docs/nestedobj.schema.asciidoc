@@ -10,13 +10,7 @@ https://example.com/schemas/nestedobject
 ....
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -30,11 +24,7 @@ https://example.com/schemas/nestedobject
 = Nested Object Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:settings[settings]
 |`object`
@@ -58,9 +48,7 @@ settings
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`collaborators`
 |object
@@ -81,9 +69,7 @@ collaborators
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`id`
 |string

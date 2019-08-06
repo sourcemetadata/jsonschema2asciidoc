@@ -12,13 +12,7 @@ https://example.com/schemas/deepextending
 This is an extending schema. It is extending another extending schema. It pulls `definitions` from other schemas.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |Yes
@@ -39,11 +33,7 @@ This is an extending schema. It is extending another extending schema. It pulls 
 = Deeply Extending Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:id[@id]
 |`string`

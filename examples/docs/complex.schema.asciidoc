@@ -12,13 +12,7 @@ https://example.com/schemas/complex
 This is an example schema that uses types defined in other schemas.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -38,11 +32,7 @@ This is an example schema that uses types defined in other schemas.
 = Complex References Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:and[and]
 |complex
@@ -168,9 +158,7 @@ String or number…
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`foo`
 |string
@@ -251,9 +239,7 @@ All items must be of the type:
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`foo`
 |Simple

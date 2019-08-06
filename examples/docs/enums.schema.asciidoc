@@ -12,13 +12,7 @@ https://example.com/schemas/enums
 This is an example schema with examples for properties with enum values
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -32,11 +26,7 @@ This is an example schema with examples for properties with enum values
 = Enumerated Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:hello[hello]
 |`enum`
@@ -72,8 +62,7 @@ The value of this property *must* be equal to one of the xref:hello-known-values
 === hello Known Values
 
 |===
-|Value
-|Description
+|Value |Description
 
 |`World`
 |
@@ -99,9 +88,7 @@ This is an example schema with examples for properties of nested objects with en
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`test`
 |string
@@ -122,8 +109,7 @@ The value of this property *must* be equal to one of the xref:nested-known-value
 ===== test Known Values
 
 |===
-|Value
-|Description
+|Value |Description
 
 |`nested`
 |

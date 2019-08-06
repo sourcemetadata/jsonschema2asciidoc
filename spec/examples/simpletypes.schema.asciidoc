@@ -12,13 +12,7 @@ https://example.com/schemas/simpletypes
 This is an example schema with examples for multiple types and their constraints.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -32,11 +26,7 @@ This is an example schema with examples for multiple types and their constraints
 = Simple Types Properties
 
 |===
-|Property
-|Type
-|Required
-|Nullable
-|Defined by
+|Property |Type |Required |Nullable |Defined by
 
 |xref:integer_threes[integer_threes]
 |`integer`
@@ -362,8 +352,7 @@ All instances must conform to this regular expression
 === string_pattern Known Values
 
 |===
-|Value
-|Description
+|Value |Description
 
 |`baa`
 |the sounds of sheeps

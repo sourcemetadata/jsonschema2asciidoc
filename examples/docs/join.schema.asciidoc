@@ -12,13 +12,7 @@ https://example.com/schemas/join
 This is an example of a JSON schema with only a join type key. Here a `oneOf'.
 
 |===
-|link:../abstract.asciidoc[Abstract]
-|Extensible
-|link:../status.asciidoc[Status]
-|Identifiable
-|Custom Properties
-|Additional Properties
-|Defined In
+|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
 
 |Can be instantiated
 |No
@@ -36,9 +30,7 @@ This is an example of a JSON schema with only a join type key. Here a `oneOf'.
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`foo`
 |string
@@ -70,9 +62,7 @@ hello
 `object` with following properties:
 
 |===
-|Property
-|Type
-|Required
+|Property |Type |Required
 
 |`bar`
 |string
