@@ -31,7 +31,7 @@
         "string_pattern": {
             "type": "string",
             "description": "A string following a regular expression",
-            "pattern": "^ba.$",
+            "pattern": "^ba.*$",
             "examples": [
                 "bar",
                 "baz",

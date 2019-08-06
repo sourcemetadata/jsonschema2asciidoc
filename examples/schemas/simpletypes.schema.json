@@ -26,7 +26,7 @@
     "string_pattern": {
       "type": "string",
       "description": "A string following a regular expression",
-      "pattern": "^ba.$",
+      "pattern": "^ba.*$",
       "examples": ["bar", "baz", "bat"],
       "meta:enum": {
         "baa": "the sounds of sheeps",

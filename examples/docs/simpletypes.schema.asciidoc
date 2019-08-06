@@ -352,12 +352,12 @@ All instances must conform to this regular expression
 
 [source,regex]
 ----
-^ba.$
+^ba.*$
 ----
 
-* test example: https://regexr.com/?expression=%5Eba.%24&text=bar[bar]
-* test example: https://regexr.com/?expression=%5Eba.%24&text=baz[baz]
-* test example: https://regexr.com/?expression=%5Eba.%24&text=bat[bat]
+* test example: https://regexr.com/?expression=%5Eba.\*%24&text=bar[bar]
+* test example: https://regexr.com/?expression=%5Eba.\*%24&text=baz[baz]
+* test example: https://regexr.com/?expression=%5Eba.\*%24&text=bat[bat]
 
 === string_pattern Known Values
 

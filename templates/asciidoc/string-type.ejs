@@ -53,9 +53,9 @@
 
 All instances must conform to this regular expression<%
           if(schema['examples']===undefined) { -%>
- (test examples https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern) %>[here]):
+ (test examples https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>[here]):
 <% } else if((typeof schema['examples'])==="string") { -%>
- (test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern) %>&text=<%- encodeURIComponent(schema['examples']) -%>[<%= schema['examples']%>]):
+ (test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema['examples'].replace('*', '\\*')) -%>[<%= schema['examples']%>]):
 <% } else { %>
 <% } -%>
 
@@ -66,6 +66,6 @@ All instances must conform to this regular expression<%
 <% if (schema['examples']!==undefined&&(typeof schema['examples'])!=="string") { -%>
 
 <%   for (let i=0;i<schema['examples'].length;i++) { -%>
-* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern) %>&text=<%- encodeURIComponent(schema['examples'][i]) %>[<%= schema['examples'][i] %>]
+* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema['examples'][i]).replace('*', '\\*') %>[<%= schema['examples'][i] %>]
 <% } } -%>
 <% } -%>
