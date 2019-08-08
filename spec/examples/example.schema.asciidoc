@@ -38,13 +38,13 @@ This is an example schema with examples. Too many examples? There can never be t
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:bar[bar]
+|xref:_bar[bar]
 |`string`
 |Optional
 |No
 |Example (this schema)
 
-|xref:foo[foo]
+|xref:_foo[foo]
 |`string`
 |Optional
 |No

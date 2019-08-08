@@ -46,19 +46,19 @@ ____
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:id[@id]
+|xref:_id[@id]
 |`string`
 |*Required*
 |No
 |Definitions (this schema)
 
-|xref:id-1[id]
+|xref:_id-1[id]
 |`string`
 |*Required*
 |No
 |Definitions (this schema)
 
-|xref:metaid[meta:id]
+|xref:_metaid[meta:id]
 |`string`
 |Optional
 |No

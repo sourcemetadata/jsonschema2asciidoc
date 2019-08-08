@@ -35,37 +35,37 @@ This is an extending schema. It is extending another extending schema. It pulls 
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:id[@id]
+|xref:_id[@id]
 |`string`
 |Optional
 |No
 |link:definitions.schema.asciidoc#id[Definitions]
 
-|xref:bar[bar]
+|xref:_bar[bar]
 |`string`
 |Optional
 |No
 |link:extensible.schema.asciidoc#bar[Extensible]
 
-|xref:baz[baz]
+|xref:_baz[baz]
 |`string`
 |Optional
 |No
 |link:extending.schema.asciidoc#baz[Extending]
 
-|xref:hey[hey]
+|xref:_hey[hey]
 |`string`
 |Optional
 |No
 |Deeply Extending (this schema)
 
-|xref:id-1[id]
+|xref:_id-1[id]
 |`string`
 |Optional
 |No
 |link:definitions.schema.asciidoc#id-1[Definitions]
 
-|xref:metaid[meta:id]
+|xref:_metaid[meta:id]
 |`string`
 |Optional
 |No

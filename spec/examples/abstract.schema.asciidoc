@@ -28,15 +28,15 @@ This is an abstract schema. It has `definitions`, but does not declare any prope
 |===
 |Property |Type |Group
 
-|xref:bar[bar]
+|xref:_bar[bar]
 |`string`
 |`https://example.com/schemas/abstract#/definitions/second`
 
-|xref:foo[foo]
+|xref:_foo[foo]
 |`string`
 |`https://example.com/schemas/abstract#/definitions/first`
 
-|xref:nonfoo[nonfoo]
+|xref:_nonfoo[nonfoo]
 |`const`
 |`https://example.com/schemas/abstract#/definitions/first`
 |===

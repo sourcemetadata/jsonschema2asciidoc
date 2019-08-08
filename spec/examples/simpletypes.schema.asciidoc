@@ -28,103 +28,103 @@ This is an example schema with examples for multiple types and their constraints
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:integer_threes[integer_threes]
+|xref:_integer_threes[integer_threes]
 |`integer`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:interger_constrained[interger_constrained]
+|xref:_interger_constrained[interger_constrained]
 |`integer`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:interger_unconstrained[interger_unconstrained]
+|xref:_interger_unconstrained[interger_unconstrained]
 |`integer`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:number_constrained[number_constrained]
+|xref:_number_constrained[number_constrained]
 |`number`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:number_unconstrained[number_unconstrained]
+|xref:_number_unconstrained[number_unconstrained]
 |`number`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_date[string_date]
+|xref:_string_date[string_date]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_email[string_email]
+|xref:_string_email[string_email]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_hostname[string_hostname]
+|xref:_string_hostname[string_hostname]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_ipv4[string_ipv4]
+|xref:_string_ipv4[string_ipv4]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_ipv6[string_ipv6]
+|xref:_string_ipv6[string_ipv6]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_length[string_length]
+|xref:_string_length[string_length]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_pattern[string_pattern]
+|xref:_string_pattern[string_pattern]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_pattern_noexample[string_pattern_noexample]
+|xref:_string_pattern_noexample[string_pattern_noexample]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_pattern_singleexample[string_pattern_singleexample]
+|xref:_string_pattern_singleexample[string_pattern_singleexample]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_unconstrained[string_unconstrained]
+|xref:_string_unconstrained[string_unconstrained]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:string_uri[string_uri]
+|xref:_string_uri[string_uri]
 |`string`
 |Optional
 |No
 |Simple Types (this schema)
 
-|xref:yesno[yesno]
+|xref:_yesno[yesno]
 |`boolean`
 |*Required*
 |No

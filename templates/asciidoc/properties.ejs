@@ -13,7 +13,7 @@
 <% _.keys(props).sort().forEach(property => {
   const schema = props[property]; -%>
 
-|xref:<%= propertiesSlugs[property] %>[<%= property %>]
+|xref:_<%= propertiesSlugs[property] %>[<%= property %>]
 |<%= schema.simpletype %>
 |<%= schema.isrequired === true ? "*Required*" : "Optional" %>
 |<%= schema.nullable === true ? "Yes" : "No" %>

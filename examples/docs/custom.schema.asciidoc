@@ -28,13 +28,13 @@ This is an extensible schema. It has `definitions`, that can be used in other sc
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:bar[bar]
+|xref:_bar[bar]
 |`string`
 |Optional
 |No
 |Custom (this schema)
 
-|xref:foo[foo]
+|xref:_foo[foo]
 |`string`
 |Optional
 |No

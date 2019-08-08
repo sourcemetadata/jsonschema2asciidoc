@@ -28,7 +28,7 @@ This is an example schema with examples for properties with constant values
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:hello[hello]
+|xref:_hello[hello]
 |`const`
 |*Required*
 |No

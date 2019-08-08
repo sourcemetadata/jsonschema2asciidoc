@@ -34,43 +34,43 @@ This is an example schema that uses types defined in other schemas.
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:and[and]
+|xref:_and[and]
 |complex
 |Optional
 |No
 |Complex References (this schema)
 
-|xref:or[or]
+|xref:_or[or]
 |complex
 |Optional
 |No
 |Complex References (this schema)
 
-|xref:refabstract[refabstract]
+|xref:_refabstract[refabstract]
 |`object`
 |*Required*
 |No
 |Complex References (this schema)
 
-|xref:reflist[reflist]
+|xref:_reflist[reflist]
 |Simple
 |Optional
 |No
 |Complex References (this schema)
 
-|xref:refnamed[refnamed]
+|xref:_refnamed[refnamed]
 |Simple
 |Optional
 |No
 |Complex References (this schema)
 
-|xref:refobj[refobj]
+|xref:_refobj[refobj]
 |`object`
 |Optional
 |No
 |Complex References (this schema)
 
-|xref:xor[xor]
+|xref:_xor[xor]
 |complex
 |Optional
 |No

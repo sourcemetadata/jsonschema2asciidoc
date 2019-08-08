@@ -46,13 +46,13 @@ This is an example schema with _multiple_ examples. Too many examples? There can
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:bar[bar]
+|xref:_bar[bar]
 |`string`
 |*Required*
 |No
 |Examples (this schema)
 
-|xref:foo[foo]
+|xref:_foo[foo]
 |`string`
 |Optional
 |No

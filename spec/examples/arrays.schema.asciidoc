@@ -28,55 +28,55 @@ This is an example schema with examples for multiple array types and their const
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:jointypelist[JoinTypelist]
+|xref:_jointypelist[JoinTypelist]
 |`array`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:boollist[boollist]
+|xref:_boollist[boollist]
 |`boolean[]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:coordinatelist[coordinatelist]
+|xref:_coordinatelist[coordinatelist]
 |`number[][]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:intlist[intlist]
+|xref:_intlist[intlist]
 |`integer[]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:list[list]
+|xref:_list[list]
 |`string[]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:listlist[listlist]
+|xref:_listlist[listlist]
 |`array[]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:numlist[numlist]
+|xref:_numlist[numlist]
 |`number[]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:objectlist[objectlist]
+|xref:_objectlist[objectlist]
 |`object[]`
 |Optional
 |No
 |Arrays (this schema)
 
-|xref:stringlistlist[stringlistlist]
+|xref:_stringlistlist[stringlistlist]
 |`string[][]`
 |Optional
 |No

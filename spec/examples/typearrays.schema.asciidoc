@@ -28,25 +28,25 @@ This schema test type arrays and nullable types
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:null[null]
+|xref:_null[null]
 |`null`
 |Optional
 |No
 |Type Arrays (this schema)
 
-|xref:string-or-null[string-or-null]
+|xref:_string-or-null[string-or-null]
 |`string`
 |Optional
 |Yes
 |Type Arrays (this schema)
 
-|xref:string-or-number[string-or-number]
+|xref:_string-or-number[string-or-number]
 |multiple
 |Optional
 |No
 |Type Arrays (this schema)
 
-|xref:string-or-number-null[string-or-number-null]
+|xref:_string-or-number-null[string-or-number-null]
 |multiple
 |Optional
 |Yes

@@ -12,7 +12,7 @@
 <% _.keys(props).sort().forEach(property => {
   const schema = props[property]; -%>
 
-|xref:<%= propertiesSlugs[property] %>[<%= property %>]
+|xref:_<%= propertiesSlugs[property] %>[<%= property %>]
 |<%= schema.simpletype %>
 |`<%= id%>#/definitions/<%= schema.definitiongroup %>`
 <% }) -%>

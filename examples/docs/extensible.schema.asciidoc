@@ -28,11 +28,11 @@ This is an extensible schema. It has `definitions`, that can be used in other sc
 |===
 |Property |Type |Group
 
-|xref:bar[bar]
+|xref:_bar[bar]
 |`string`
 |`https://example.com/schemas/extensible#/definitions/second`
 
-|xref:foo[foo]
+|xref:_foo[foo]
 |`string`
 |`https://example.com/schemas/extensible#/definitions/first`
 |===

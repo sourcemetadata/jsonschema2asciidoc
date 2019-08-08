@@ -28,13 +28,13 @@ This is an example schema with examples for properties with enum values
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:hello[hello]
+|xref:_hello[hello]
 |`enum`
 |*Required*
 |No
 |Enumerated (this schema)
 
-|xref:nested[nested]
+|xref:_nested[nested]
 |`object`
 |Optional
 |No
@@ -57,7 +57,7 @@ A simple string. Pick a value.
 * type: `enum`
 * defined in this schema
 
-The value of this property *must* be equal to one of the xref:hello-known-values[known values below].
+The value of this property *must* be equal to one of the xref:_hello_known_values[known values below].
 
 === hello Known Values
 
@@ -104,7 +104,7 @@ A simple string. Pick a value.
 * is optional
 * type: `enum`
 
-The value of this property *must* be equal to one of the xref:nested-known-values[known values below].
+The value of this property *must* be equal to one of the xref:_nested_known_values[known values below].
 
 ===== test Known Values
 

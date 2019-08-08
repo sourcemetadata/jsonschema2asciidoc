@@ -28,7 +28,7 @@ A schema in a sub directory
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:id[id]
+|xref:_id[id]
 |`string`
 |Optional
 |No

@@ -28,7 +28,7 @@ This is a _very_ simple example of a JSON schema. There is only one property.
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:id[id]
+|xref:_id[id]
 |`string`
 |Optional
 |No

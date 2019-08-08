@@ -28,7 +28,7 @@ This is a schema which is currently in the `stabilizing` status.
 |===
 |Property |Type |Required |Nullable |Defined by
 
-|xref:id[id]
+|xref:_id[id]
 |`string`
 |Optional
 |No
