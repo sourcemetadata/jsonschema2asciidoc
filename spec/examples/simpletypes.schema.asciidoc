@@ -229,7 +229,7 @@ A date-like string.
 
 `string`
 
-* format: `date-time` – date and time (according to http://tools.ietf.org/html/rfc3339[RFC 3339, section 5.6])
+* format: `date-time` – date and time (according to https://tools.ietf.org/html/rfc3339[RFC 3339, section 5.6])
 
 == string_email
 
@@ -488,7 +488,7 @@ A URI.
 
 `string`
 
-* format: `uri` – Uniformous Resource Identifier (according to http://tools.ietf.org/html/rfc3986[RFC3986])
+* format: `uri` – Uniformous Resource Identifier (according to https://tools.ietf.org/html/rfc3986[RFC3986])
 
 == yesno
 

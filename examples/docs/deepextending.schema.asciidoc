@@ -92,7 +92,7 @@ An `id` with an `@` in front of it. The `@` stands for ``dot com''
 
 `string`
 
-* format: `uri` – Uniformous Resource Identifier (according to http://tools.ietf.org/html/rfc3986[RFC3986])
+* format: `uri` – Uniformous Resource Identifier (according to https://tools.ietf.org/html/rfc3986[RFC3986])
 
 == bar
 

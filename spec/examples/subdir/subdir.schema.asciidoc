@@ -55,7 +55,7 @@ A unique identifier given to every addressable thing.
 
 `string`
 
-* format: `uri` – Uniformous Resource Identifier (according to http://tools.ietf.org/html/rfc3986[RFC3986])
+* format: `uri` – Uniformous Resource Identifier (according to https://tools.ietf.org/html/rfc3986[RFC3986])
 
 *All* of the following _requirements_ need to be fulfilled.
 
