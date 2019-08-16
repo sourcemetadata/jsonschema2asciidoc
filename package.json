@@ -43,7 +43,8 @@
     "jasmine-diff": "^0.1.3",
     "lint-staged": "^8.1.5",
     "npm-snapshot": "^1.0.3",
-    "semantic-release": "^15.13.19"
+    "semantic-release": "^15.13.19",
+    "winston-null": "^2.0.0"
   },
   "engines": {
     "node": ">= 6.0.0"

@@ -65,9 +65,9 @@ logger.configure({
 });
 
 var ajv = new Ajv({ allErrors: true, messages:true, schemaId: 'auto', logger: logger });
-console.log(argv.v);
+logger.info(argv.v);
 if (argv.v === '06'||argv.v === 6) {
-  console.log('enabling draft-06 support');
+  logger.info('enabling draft-06 support');
   ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 } else if (argv.v === '04' || argv.v === 4) {
   ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));

@@ -8,6 +8,10 @@
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
 var readSchemaFile = require('../../lib/readSchemaFile');
+const logger = require('winston');
+const NullTransport = require('winston-null');
+
+logger.add(new NullTransport.NullTransport());
 
 describe('readSchemaFile module', () => {
   var fakePath = 'some/path';
@@ -15,12 +19,16 @@ describe('readSchemaFile module', () => {
     spyOn(fs, 'readFileAsync').and.returnValue(Promise.resolve('{"schema":"yes"}'));
   });
   describe('reading schema files without an $id key', () => {
+    beforeEach(() => {
+      spyOn(logger, 'warn').and.callThrough();
+    });
     it('should return a schema path map with path to the file as a key, and object value with path and json schema', done => {
       readSchemaFile({}, fakePath)
         .then(map => {
           expect(map[fakePath]).toBeDefined();
           expect(map[fakePath].filePath).toEqual(fakePath);
           expect(map[fakePath].jsonSchema).toEqual({ schema:'yes' });
+          expect(logger.warn.calls.allArgs()).toEqual([ [ 'schema ' + fakePath + ' has no $id' ] ]);
         })
         .catch(fail)
         .done(done);
