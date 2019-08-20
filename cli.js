@@ -15,7 +15,7 @@ const Ajv = require('ajv');
 const logger = require('winston');
 
 const Schemas = require('./lib/schemas');
-const readSchemaFile = require('./lib/readSchemaFile');
+const readSchemaFiles = require('./lib/readSchemaFiles');
 
 // parse/process command line arguments
 const argv = require('optimist')
