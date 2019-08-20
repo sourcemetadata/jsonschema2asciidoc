@@ -5,8 +5,8 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-var asciidocWriter = require('../../lib/asciidocWriter');
-var ejs = require('ejs');
+const asciidocWriter = require('../../lib/asciidocWriter');
+const ejs = require('ejs');
 
 describe('writeFiles module', () => {
   describe('generateAsciidoc method', () => {

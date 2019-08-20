@@ -5,16 +5,16 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
-var readSchemaFile = require('../../lib/readSchemaFile');
+const Promise = require('bluebird');
+const fs = Promise.promisifyAll(require('fs'));
+const readSchemaFiles = require('../../lib/readSchemaFiles');
 const logger = require('winston');
 const NullTransport = require('winston-null');
 
 logger.add(new NullTransport.NullTransport());
 
-describe('readSchemaFile module', () => {
-  var fakePath = 'some/path';
+describe('readSchemaFiles module', () => {
+  const fakePath = 'some/path';
   beforeEach(() => {
     spyOn(fs, 'readFileAsync').and.returnValue(Promise.resolve('{"schema":"yes"}'));
   });
@@ -23,7 +23,7 @@ describe('readSchemaFile module', () => {
       spyOn(logger, 'warn').and.callThrough();
     });
     it('should return a schema path map with path to the file as a key, and object value with path and json schema', done => {
-      readSchemaFile({}, fakePath)
+      readSchemaFiles({}, fakePath)
         .then(map => {
           expect(map[fakePath]).toBeDefined();
           expect(map[fakePath].filePath).toEqual(fakePath);
@@ -39,7 +39,7 @@ describe('readSchemaFile module', () => {
       fs.readFileAsync.and.returnValue(Promise.resolve('{"$id":"allyourbase"}'));
     });
     it('should return a schema path map with $id value as a key, and object value with path and json schema', done => {
-      readSchemaFile({}, fakePath)
+      readSchemaFiles({}, fakePath)
         .then(map => {
           expect(map['allyourbase']).toBeDefined();
           expect(map['allyourbase'].filePath).toEqual(fakePath);
@@ -49,7 +49,7 @@ describe('readSchemaFile module', () => {
         .done(done);
     });
     it('should not overwrite the value for an existing $id key in the schema path map', done => {
-      readSchemaFile({ allyourbase:{} }, fakePath)
+      readSchemaFiles({ allyourbase:{} }, fakePath)
         .then(map => {
           expect(map['allyourbase']).toBeDefined();
           expect(map['allyourbase'].filePath).not.toBeDefined();

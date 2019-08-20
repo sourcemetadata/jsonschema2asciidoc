@@ -5,12 +5,12 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
-var schema = require('../../lib/schema');
+const Promise = require('bluebird');
+const fs = Promise.promisifyAll(require('fs'));
+const schemas = require('../../lib/schemas');
 
-describe('schema module', () => {
-  describe('getDescription method', () => {
+describe('schemas module', () => {
+  describe('readExternalDescription method', () => {
     beforeEach(() => {
       spyOn(fs, 'readFileAsync');
     });
@@ -18,7 +18,7 @@ describe('schema module', () => {
       var fakeContents = 'IMPORTANT CONTENTS!';
       fs.readFileAsync.and.returnValue(Promise.resolve(fakeContents));
       var skeem = {};
-      schema.getDescription('/some/path', skeem)
+      schemas.readExternalDescription('/some/path', skeem)
         .then(returnedSchema => {
           expect(returnedSchema.description).toEqual(fakeContents);
           expect(skeem.description).toEqual(fakeContents);

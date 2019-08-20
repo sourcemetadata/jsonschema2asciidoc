@@ -6,19 +6,19 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-var Promise = require('bluebird');
-var path = require('path');
-var _ = require('lodash');
-var fs = Promise.promisifyAll(require('fs'));
-var readdirp = require('readdirp');
-var Ajv = require('ajv');
-var logger = require('winston');
+const Promise = require('bluebird');
+const path = require('path');
+const _ = require('lodash');
+const fs = Promise.promisifyAll(require('fs'));
+const readdirp = require('readdirp');
+const Ajv = require('ajv');
+const logger = require('winston');
 
-var Schema = require('./lib/schema');
-var readSchemaFile = require('./lib/readSchemaFile');
+const Schemas = require('./lib/schemas');
+const readSchemaFile = require('./lib/readSchemaFile');
 
 // parse/process command line arguments
-var argv = require('optimist')
+const argv = require('optimist')
   .usage('Generate Asciidoc documentation from JSON Schema.\n\nUsage: $0')
   .demand('d')
   .alias('d', 'input')
@@ -64,7 +64,7 @@ logger.configure({
   ]
 });
 
-var ajv = new Ajv({ allErrors: true, messages:true, schemaId: 'auto', logger: logger });
+const ajv = new Ajv({ allErrors: true, messages:true, schemaId: 'auto', logger: logger });
 logger.info(argv.v);
 if (argv.v === '06'||argv.v === 6) {
   logger.info('enabling draft-06 support');
@@ -72,7 +72,6 @@ if (argv.v === '06'||argv.v === 6) {
 } else if (argv.v === '04' || argv.v === 4) {
   ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 }
-var schemaPathMap = {};
 var metaElements = {};
 var schemaPath = path.resolve(argv.d);
 var outDir = path.resolve(argv.o);
@@ -101,6 +100,7 @@ if (argv.m) {
   }
 }
 
+const schemaPathsMap = {};
 logger.info('output directory: %s', outDir);
 if (target.isDirectory()) {
   // the ajv json validator will be passed into the main module to help with processing
@@ -117,12 +117,11 @@ if (target.isDirectory()) {
       }
     })
     .on('end', () => {
-      Schema.setAjv(ajv);
-      Schema.setSchemaPathMap(schemaPathMap);
-      return Promise.reduce(files, readSchemaFile, schemaPathMap)
-        .then(schemaMap => {
-          logger.info('finished reading all *.%s files in %s, beginning processing….', schemaExtension, schemaPath);
-          return Schema.process(schemaMap, schemaPath, outDir, schemaDir, metaElements, readme, docs);
+      Schemas.setAjv(ajv);
+      return Promise.reduce(files, readSchemaFiles, schemaPathsMap)
+        .then(schemaPathsMap => {
+          logger.info('finished reading all *.%s files in %s, beginning processing...', schemaExtension, schemaPath);
+          return Schemas.process(schemaPathsMap, schemaPath, outDir, schemaDir, metaElements, readme, docs);
         })
         .then(() => {
           logger.info('Processing complete.');
@@ -137,13 +136,12 @@ if (target.isDirectory()) {
       process.exit(1);
     });
 } else {
-  readSchemaFile(schemaPathMap, schemaPath)
-    .then(schemaMap => {
+  readSchemaFiles(schemaPathsMap, schemaPath)
+    .then(schemaPathsMap => {
       ajv.addSchema(require(schemaPath), schemaPath);
-      Schema.setAjv(ajv);
-      Schema.setSchemaPathMap(schemaPathMap);
+      Schemas.setAjv(ajv);
       logger.info('finished reading %s, beginning processing...', schemaPath);
-      return Schema.process(schemaMap, schemaPath, outDir, schemaDir, metaElements, false, docs);
+      return Schemas.process(schemaPathsMap, schemaPath, outDir, schemaDir, metaElements, false, docs);
     })
     .then(() => {
       logger.info('Processing complete.');
