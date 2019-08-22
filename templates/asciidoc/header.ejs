@@ -5,16 +5,6 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */ -%>
 
-= <%=schema.title %> Schema
-
-....
-<%= schema.$id %>
-....
-<% if (schema.description!==undefined) { -%>
-
-<%- schema.description %>
-<% } -%>
-
 <%= table %>
 <% if (dependencies.length > 0) { -%>
 
