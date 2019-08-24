@@ -64,7 +64,9 @@ Is <% if (required) { %>*required*<% } else { %>optional<% } %>
 `<%=schema.type %>`<%= schema.nullable ? ', nullable' : '' %>
 <% } else if (schema.type === 'object') { -%>
 
-`<%=schema.type %>`<%= schema.nullable ? ', nullable,' : '' %> with the following properties:
+`<%=schema.type %>`<%= schema.nullable ? ', nullable,' : '' %>
+<% if (schema.properties || schema.patternProperties/*TODO*/) -%>
+with the following properties:
 
 <% const hasDefault = _.keys(properties).filter(property => _.has(properties, property + '.default')).length > 0 || _.keys(patternProperties).filter(property => _.has(patternProperties, property + '.default')).length > 0); -%>
 |===
@@ -130,6 +132,7 @@ this schema
 :leveloffset: -2
 
 <% }) -%>
+<% } %>
 <% } else if (schema.type === 'array') { -%>
 
 <% if (schema.items !== undefined && schema.items.type === 'array') { -%>
