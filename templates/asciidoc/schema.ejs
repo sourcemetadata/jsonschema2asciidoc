@@ -116,7 +116,6 @@ this schema
 }) -%>
 
 :leveloffset: -2
-
 <% }) -%>
 <% _.keys(schema.patternProperties).forEach(propertyPattern => { -%>
 
@@ -130,9 +129,8 @@ this schema
 }) -%>
 
 :leveloffset: -2
-
 <% }) -%>
-<% } %>
+<% } -%>
 <% } else if (schema.type === 'array') { -%>
 
 <% if (schema.items !== undefined && schema.items.type === 'array') { -%>
@@ -154,7 +152,6 @@ All items must be of the type:
 }) -%>
 
 :leveloffset: -2
-
 <% } else if (schema.type === 'number' || schema.type === 'integer') { -%>
 
 `<%=schema.type %>`<%= schema.nullable ? ', nullable' : '' %>
@@ -262,7 +259,6 @@ Unknown type `<%= schema.type %>`.
 }) -%>
 
 :leveloffset: -2
-
 <% } -%>
 <% } -%>
 <% if (schema.oneOf !== undefined) { -%>
@@ -280,7 +276,6 @@ Unknown type `<%= schema.type %>`.
 }) -%>
 
 :leveloffset: -2
-
 <% } -%>
 <% } -%>
 <% if (schema.enum !== undefined) { -%>
