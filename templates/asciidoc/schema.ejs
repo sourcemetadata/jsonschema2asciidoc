@@ -298,23 +298,24 @@ Value MUST be one the following:
 === <%= title ? title + ' ' : '' %> Default Value
 
 <% if (schema.type === 'string' && schema.pattern) { -%>
-https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema.examples[i]).replace('*', '\\*') %>[<%= schema.default %>]
+https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema.default).replace('*', '\\*') %>[<%= schema.default %>]
 <% } else { -%>
 [source,json]
 ----
 <%- JSON.stringify(schema.default, null, 2) %>
 ----
 <% } -%>
-<% if (schema.examples && schema.examples.length == 1) { -%>
+<% if (schema.examples && schema.examples.length == 1) {
+  const example = schema.examples[0]; -%>
 
 === <%= title ? title + ' ' : '' %> Example
 
 <% if (schema.type === 'string' && schema.pattern) { -%>
-* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema.examples[i]).replace('*', '\\*') %>[<%= schema.examples[0] %>]
+* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(example).replace('*', '\\*') %>[<%= example %>]
 <% } else { -%>
 [source,json]
 ----
-<%- JSON.stringify(schema.examples[0], null, 2) %>
+<%- JSON.stringify(example, null, 2) %>
 ----
 <% } -%>
 <% } else if (schema.examples && schema.examples.length > 1) { -%>
@@ -323,7 +324,7 @@ https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*
 <%  _.forEach(schema.examples, example => { -%>
 
 <% if (schema.type === 'string' && schema.pattern) { -%>
-* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema.examples[i]).replace('*', '\\*') %>[<%= example %>]
+* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(example).replace('*', '\\*') %>[<%= example %>]
 <% } else { -%>
 [source,json]
 ----

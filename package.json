@@ -27,7 +27,8 @@
     "optimist": "^0.6.1",
     "readdirp": "^2.1.0",
     "valid-url": "1.0.9",
-    "winston": "^3.1.0"
+    "winston": "^3.1.0",
+    "@sourcemetadata/graph-data-structure": "^1.9.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
