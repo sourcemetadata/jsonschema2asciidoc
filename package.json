@@ -20,15 +20,16 @@
     "async": "^3.0.1",
     "bluebird": "^3.5.4",
     "ejs": "^2.4.2",
+    "graph-data-structure": "^1.9.0",
     "jasmine-xml-reporter": "^1.2.1",
     "json-pointer": "^0.6.0",
+    "json-schema-merge-allof": "^0.6.0",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
     "optimist": "^0.6.1",
     "readdirp": "^2.1.0",
     "valid-url": "1.0.9",
-    "winston": "^3.1.0",
-    "@sourcemetadata/graph-data-structure": "^1.9.0"
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
@@ -51,7 +52,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sourcemetadata/jsonschema2asciidoc.git"
+    "url": "https://github.com/sourcemetadata/jsonschema2asciidoc"
   },
   "bugs": {
     "url": "https://github.com/sourcemetadata/jsonschema2asciidoc/issues"

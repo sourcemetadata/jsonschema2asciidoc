@@ -10,6 +10,12 @@ const fs = Promise.promisifyAll(require('fs'));
 const schemas = require('../../lib/schemas');
 
 describe('schemas module', () => {
+  describe('mergeFormats function', () => {
+    expect(schemas.mergeFormats('uri', 'uri-reference')).toEqual('uri-reference');
+    expect(schemas.mergeFormats('iri', 'uri')).toEqual('uri-template');
+    expect(() => { schemas.mergeFormats('date', 'time') }).toThrow(new Error('Formats date and time are not merge-able'));
+  });
+
   describe('readExternalDescription method', () => {
     beforeEach(() => {
       spyOn(fs, 'readFileAsync');
