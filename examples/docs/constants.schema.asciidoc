@@ -11,18 +11,6 @@ https://example.com/schemas/constants
 
 This is an example schema with examples for properties with constant values
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:constants.schema.json[constants.schema.json]
-|===
-
 = Constant Types Properties
 
 |===

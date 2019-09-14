@@ -10,12 +10,6 @@
     "title": "Deeply Extending",
     "description": "This is an extending schema. It is extending another extending schema. It pulls `definitions` from other schemas.",
     "type": "object",
-    "meta:extensible": true,
-    "meta:extends": [
-        "https://example.com/schemas/definitions",
-        "https://example.com/schemas/extensible",
-        "https://example.com/schemas/extending"
-    ],
     "definitions": {
         "fourth": {
             "properties": {

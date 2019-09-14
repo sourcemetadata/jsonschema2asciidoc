@@ -11,18 +11,6 @@ https://example.com/schemas/typearrays
 
 This schema test type arrays and nullable types
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:typearrays.schema.json[typearrays.schema.json]
-|===
-
 = Type Arrays Properties
 
 |===

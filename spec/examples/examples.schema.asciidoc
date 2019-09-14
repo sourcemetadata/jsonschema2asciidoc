@@ -11,18 +11,6 @@ https://example.com/schemas/examples
 
 This is an example schema with _multiple_ examples. Too many examples? There can never be too many examples!
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:examples.schema.json[examples.schema.json]
-|===
-
 == Examples Examples
 
 [source,json]

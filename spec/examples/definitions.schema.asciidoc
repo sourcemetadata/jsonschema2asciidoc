@@ -29,18 +29,6 @@ ____
 Everything is better with a quote.
 ____
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|Yes
-|Experimental
-|Yes
-|Forbidden
-|Permitted
-|link:definitions.schema.json[definitions.schema.json]
-|===
-
 = Definitions Properties
 
 |===

@@ -11,18 +11,6 @@ https://example.com/schemas/enums
 
 This is an example schema with examples for properties with enum values
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:enums.schema.json[enums.schema.json]
-|===
-
 = Enumerated Properties
 
 |===

@@ -11,18 +11,6 @@ https://example.com/schemas/simple
 
 This is a _very_ simple example of a JSON schema. There is only one property.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:simple.schema.json[simple.schema.json]
-|===
-
 = Simple Properties
 
 |===

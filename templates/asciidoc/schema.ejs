@@ -1,0 +1,353 @@
+<% /**
+ * Copyright 2017 Adobe Systems Incorporated. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ */ -%>
+
+[[<% path %>]]
+<% title = title ?: schema.title -%>
+<% if (title) { -%>
+
+= <%= title %>
+<% } -%>
+....
+<%= schema.$id || path %>
+....
+<% if (required !== undefined) -%>
+Is <% if (required) { %>*required*<% } else { %>optional<% } %>
+<% } -%>
+<% if (schema.description) { -%>
+
+<%- schema.description %>
+<% } -%>
+
+<% if (dependencies.length > 0) { -%>
+
+== Schema Hierarchy
+
+<%- include('dependencies', {
+  _: _,
+  schema: schema,
+  level: 1
+}) -%>
+<% } -%>
+<% if (schema.definitions) { -%>
+
+== <%= title ? title + ' ' : '' %> Definitions
+
+:leveloffset: +2
+
+<% _.keys(schema.definitions).forEach(definition => { -%>
+<%- include('schema', {
+  _: _,
+  path: path + '/definitions/' + definition
+  title: definition,
+  schema: schema.definitions[definition]
+}) -%>
+<% }) -%>
+<% } -%>
+
+:leveloffset: -2
+
+== <%= title ? title + ' ' : '' %> Type
+
+<% if (schema.refs) { -%>
+<% _.forEach(schema.refs, ref => {
+* `<% link:<%= ref.$linkPath %>[<%= ref.$linkVal %>]<%=schema.$ref %>`
+<% } %>
+// TODO
+* type: <%= schema.simpletype %><% if (schema.simpletype.match(/\[\]\[\]/) || schema.simpletype === '`array[]`') { %> (nested array)<% } %>
+<% if (schema.type === 'array') { -%>
+<%        if (schema.maxItems !== undefined && schema.minItems > 0) { -%>
+* between `<%= schema.minItems %>` and `<%= schema.maxItems %>` items in the array
+<% } else if (schema.maxItems !== undefined                       ) { -%>
+* no more than `<%= schema.maxItems %>` items in the array
+<% } else if (schema.minItems > 0                                 ) { -%>
+* at least `<%= schema.minItems %>` items in the array
+<% } -%>
+<% } -%>
+<% if (schema.type === 'null') { -%>
+
+`null` This property can only have the value `null`.
+<% } else if (schema.type === 'boolean') { -%>
+
+`<%=schema.type %>`<%= schema.nullable ? ', nullable' : '' %>
+<% } else if (schema.type === 'object') { -%>
+
+`<%=schema.type %>`<%= schema.nullable ? ', nullable,' : '' %>
+<% if (schema.properties || schema.patternProperties/*TODO*/) -%>
+with the following properties:
+
+<% const hasDefault = _.keys(properties).filter(property => _.has(properties, property + '.default')).length > 0 || _.keys(patternProperties).filter(property => _.has(patternProperties, property + '.default')).length > 0); -%>
+|===
+|Property |Type |Required |Nullable<% if (hasDefault) { %> |Default<% } -%> |Defined by
+<% _.keys(schema.properties).forEach(propertyName => {
+  const property = schema.properties[propertyName]; -%>
+
+|xref:<%= path + '/properties/' + propertyName %>[<%= propertyName %>]
+|<%= property.simpletype %>
+|<%= schema.required && schema.required.indexOf(propertyName) >= 0 ? '*Required*' : 'Optional' %>
+|<%= property.nullable === true ? 'Yes' : 'No' %>
+|<% if (hasDefault) { %><% if (property.default !== undefined) { %>`<%- JSON.stringify(property.default) %>`<% } %>
+|<% } %>
+<% if (property.$oSchema) { -%>
+link:<%= property.$oSchema.$linkPath %>#<%= propertiesSlugs[property] %>[<%= property.$oSchema.$linkVal %>]
+<% } else { -%>
+this schema
+<% } -%>
+<% }) -%>
+
+<% _.keys(schema.patternProperties).forEach(propertyPattern => {
+  const patternProperty = schema.patternProperties[propertyPattern]; -%>
+
+|`xref:<%= path + '/patternProperties/' + propertyPattern %>[<%= propertyPattern.replace(':', '') %>]`
+|<%= patternProperty.simpletype %>
+|Pattern
+|<%= patternProperty.nullable === true ? 'Yes' : 'No' %>
+|<% if (hasDefault) { %><% if (patternProperty.default !== undefined) { %>`<%- JSON.stringify(patternProperty.default) %>`<% } %>
+|<% } %>
+<% if (patternProperty.$oSchema) { -%>
+link:<%= patternProperty.$oSchema.$linkPath %>#<%= patternProperty.replace(':', '').toLowerCase() %>[<%= patternProperty.$oSchema.$linkVal %>]
+<% } else { -%>
+this schema
+<% } -%>
+<% }) -%>
+|===
+<% _.keys(schema.properties).forEach(propertyName => { -%>
+
+:leveloffset: +2
+
+<%- include('schema', {
+  _: _,
+  path: path + '/properties/' + propertyName,
+  title: 'Pattern: `' + name + '`',
+  schema: schema.properties[propertyName],
+  required: schema.required && schema.required.indexOf(propertyName) >= 0
+}) -%>
+
+:leveloffset: -2
+<% }) -%>
+<% _.keys(schema.patternProperties).forEach(propertyPattern => { -%>
+
+:leveloffset: +2
+
+<%- include('schema', {
+  _: _,
+  path: path + '/patternProperties/' + propertyPattern,
+  title: 'Pattern: `' + name + '`',
+  schema: schema.patternProperties[propertyPattern]
+}) -%>
+
+:leveloffset: -2
+<% }) -%>
+<% } -%>
+<% } else if (schema.type === 'array') { -%>
+
+<% if (schema.items !== undefined && schema.items.type === 'array') { -%>
+Nested array type: `<%= schema.items.simpletype %>`<%= schema.nullable ? ', nullable' : '' %>
+<% } else if (nested === undefined || nested === false) { -%>
+Array type: `<%=schema.simpletype %>`
+<% } -%>
+<% if (schema.items !== undefined) { -%>
+<% if (!(schema.items !== undefined && schema.items.type === 'array')) { -%>
+
+All items must be of the type:
+
+:leveloffset: +2
+
+<%- include('schema', {
+  _: _,
+  path: path + '/items',
+  schema: schema.items
+}) -%>
+
+:leveloffset: -2
+<% } else if (schema.type === 'number' || schema.type === 'integer') { -%>
+
+`<%=schema.type %>`<%= schema.nullable ? ', nullable' : '' %>
+
+<% if (schema.exclusiveMinumum !== undefined) { -%>
+* value must must be greater than: `<%=schema.exclusiveMinumum %>`
+<% } else if (schema.minimum !== undefined) { -%>
+* minimum value: `<%=schema.minimum %>`
+<% } -%>
+<% if (schema.exclusiveMaximum !== undefined) { -%>
+* value must be strictly less than: `<%=schema.exclusiveMaximum %>`
+<% } else if (schema.maximum !== undefined) { -%>
+* maximum value: `<%=schema.maximum %>`
+<% } -%>
+<% if (schema.multipleOf) { -%>
+* must be a multiple of `<%=schema.multipleOf %>`
+<% } -%>
+
+<% } else if (schema.type === 'string') { -%>
+
+`string`<%= schema.nullable ? ', nullable' : '' %>
+
+<% switch (schema.format) { -%>
+<%        case 'date-time': -%>
+* format: `date-time` – date and time (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
+<% break; case 'date': -%>
+* format: `date` – date, without time (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
+<% break; case 'time': -%>
+* format: `time` – time, without date (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
+<% break; case 'email': -%>
+* format: `email` – email address (according to https://tools.ietf.org/html/rfc5322#section-3.4.1[RFC 5322, section 3.4.1])
+<% break; case 'idn-email': -%>
+* format: `idn-email` – international email address (according to https://tools.ietf.org/html/rfc6531[RFC 6531])
+<% break; case 'hostname': -%>
+* format: `hostname` – Domain Name (according to https://tools.ietf.org/html/rfc1034#section-3.1[RFC 1034, section 3.1])
+<% break; case 'idn-hostname': -%>
+* format: `idn-hostname` – Internationalized Domain Name (according to https://tools.ietf.org/html/rfc5890#section-2.3.2.3[RFC 5890, section 2.3.2.3])
+<% break; case 'ipv4': -%>
+* format: `ipv4` – IP (v4) address (according to https://tools.ietf.org/html/rfc2673[RFC 2673, section 3.2])
+<% break; case 'ipv6': -%>
+* format: `ipv6` – IP (v6) address (according to https://tools.ietf.org/html/rfc4291[RFC 4291, section 2.2])
+<%        case 'uri': -%>
+* format: `uri` – Uniformous Resource Identifier (according to https://tools.ietf.org/html/rfc3986[RFC 3986])
+<% break; case 'uri-reference': -%>
+* format: `uri-reference` – URI Reference (according to https://tools.ietf.org/html/rfc3986[RFC 3986])
+<% break; case 'iri': -%>
+* format: `iri` – Internationalized Resource Identifier (according to https://tools.ietf.org/html/rfc3987[RFC 3987])
+<% break; case 'iri-reference': -%>
+* format: `iri-reference` – IRI Reference (according to https://tools.ietf.org/html/rfc3987[RFC 3987])
+<% break; case 'uri-template': -%>
+* format: `uri-template` – URI Template (according to https://tools.ietf.org/html/rfc6570[RFC 6570])
+<% break; case 'json-pointer': -%>
+* format: `json-pointer` – JSON Pointer (according to https://tools.ietf.org/html/rfc6901#section-5[RFC 6901, section 5])
+<% break; case 'relative-json-pointer': -%>
+* format: `relative-json-pointer` – Relative JSON Pointer (according to https://tools.ietf.org/html/draft-handrews-relative-json-pointer-01[Relative JSON Pointer])
+<% break; case 'regex': -%>
+* format: `regex` – Regular Expression (according to https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf[ECMA 262])
+<% } -%>
+<% if (schema.minLength > 0) { -%>
+* minimum length: <%= schema.minLength %> characters
+<% } -%>
+<% if (schema.maxLength) { -%>
+* maximum length: <%= schema.maxLength %> characters
+<% } -%>
+<% if (schema.pattern) { -%>
+
+All instances must conform to this regular expression:
+
+[source,regex]
+----
+<%- schema.pattern %>
+----
+<% } -%>
+<% } else if (schema.simpletype === 'multiple') { -%>
+
+Either one of:
+
+<%  _.forEach(schema.type, t => { -%>
+* `<%= t %>`
+<% }) -%>
+<% if (schema.nullable) { -%>
+* or `null`
+<% } -%>
+<% } else { -%>
+
+Unknown type `<%= schema.type %>`.
+
+[source,json]
+----
+<%- JSON.stringify(schema.type, null, 2) %>
+----
+<% } -%>
+<% } -%>
+<% if (schema.anyOf !== undefined) { -%>
+*At least one* of the following _conditions_ MUST be fulfilled.
+<% for (let i = 0; i < schema.anyOf.length; i++) { -%>
+
+:leveloffset: +2
+
+<%- include('schema', {
+  _: _,
+  path: path + '/anyOf/' + i
+  title: 'Condition ' + (i + 1),
+  schema: schema.anyOf[i]
+}) -%>
+
+:leveloffset: -2
+<% } -%>
+<% } -%>
+<% if (schema.oneOf !== undefined) { -%>
+*Exactly one* of the following _conditions_ MUST be fulfilled.
+
+<% for (let i = 0; i < schema.oneOf.length; i++) { -%>
+
+:leveloffset: +2
+
+<%- include('schema', {
+  _: _,
+  path: path + '/oneOf/' + i
+  title: 'Condition ' + (i + 1),
+  schema: schema.oneOf[i]
+}) -%>
+
+:leveloffset: -2
+<% } -%>
+<% } -%>
+<% if (schema['meta:enum'] !== undefined) { -%>
+
+=== <%=name %> Known Values
+
+<% if (schema.enum !== undefined) { -%>
+Value MUST be one the following:
+<% } -%>
+
+|===
+|Value |Description
+<%  _.forIn(schema['meta:enum'], (value, description) => { -%>
+
+|`<%= JSON.stringify(value, null, 2) %>`
+|<%= description %>
+<% }) -%>
+|=== 
+<% } -%>
+<% if (schema.default) { -%>
+
+=== <%= title ? title + ' ' : '' %> Default Value
+
+<% if (schema.type === 'string' && schema.pattern) { -%>
+https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(schema.default).replace('*', '\\*') %>[<%= schema.default %>]
+<% } else { -%>
+[source,json]
+----
+<%- JSON.stringify(schema.default, null, 2) %>
+----
+<% } -%>
+<% if (schema.examples && schema.examples.length == 1) {
+  const example = schema.examples[0]; -%>
+
+=== <%= title ? title + ' ' : '' %> Example
+
+<% if (schema.type === 'string' && schema.pattern) { -%>
+* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(example).replace('*', '\\*') %>[<%= example %>]
+<% } else { -%>
+[source,json]
+----
+<%- JSON.stringify(example, null, 2) %>
+----
+<% } -%>
+<% } else if (schema.examples && schema.examples.length > 1) { -%>
+
+=== <%= title ? title + ' ' : '' %> Examples
+<%  _.forEach(schema.examples, example => { -%>
+
+<% if (schema.type === 'string' && schema.pattern) { -%>
+* test example: https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>&text=<%- encodeURIComponent(example).replace('*', '\\*') %>[<%= example %>]
+<% } else { -%>
+[source,json]
+----
+<%- JSON.stringify(example, null, 2) %>
+----
+<% } -%>
+<% }) -%>
+<% } else if (schema.type === 'string' && schema.pattern) { -%>
+
+=== <%= title ? title + ' ' : '' %> Examples
+
+Test examples https://regexr.com/?expression=<%- encodeURIComponent(schema.pattern).replace('*', '\\*') %>[here]
+<% } -%>

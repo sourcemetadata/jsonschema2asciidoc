@@ -1,0 +1,8 @@
+<%= "*".repeat(level) %> link:<%= $schema.path %>[<%= $schema.title %>] `<%= $schema.$id %>`
+<%  _.forEach(schema.dependencies, (dependency) => { -%>
+<%- include('dependencies', {
+  _: _,
+  schema: dependency,
+  level: level + 1
+}) -%>
+<% }) -%>

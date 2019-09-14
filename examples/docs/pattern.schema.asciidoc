@@ -11,18 +11,6 @@ https://example.com/schemas/pattern
 
 This is an example of a JSON schema with only a `patternProperties` key.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:pattern.schema.json[pattern.schema.json]
-|===
-
 == Pattern: `[0-9]`
 
 Applies to all properties that match the regular expression `[0-9]`

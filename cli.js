@@ -6,19 +6,19 @@
  * of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-var Promise = require('bluebird');
-var path = require('path');
-var _ = require('lodash');
-var fs = Promise.promisifyAll(require('fs'));
-var readdirp = require('readdirp');
-var Ajv = require('ajv');
-var logger = require('winston');
+const Promise = require('bluebird');
+const path = require('path');
+const _ = require('lodash');
+const fs = Promise.promisifyAll(require('fs'));
+const readdirp = require('readdirp');
+const Ajv = require('ajv');
+const logger = require('winston');
 
-var Schema = require('./lib/schema');
-var readSchemaFile = require('./lib/readSchemaFile');
+const Schemas = require('./lib/schemas');
+const readSchemaFiles = require('./lib/readSchemaFiles');
 
 // parse/process command line arguments
-var argv = require('optimist')
+const argv = require('optimist')
   .usage('Generate Asciidoc documentation from JSON Schema.\n\nUsage: $0')
   .demand('d')
   .alias('d', 'input')
@@ -51,7 +51,7 @@ var argv = require('optimist')
   })
   .argv;
 
-const docs = _.fromPairs(_.toPairs(argv).filter(([ key, value ]) => { return key.startsWith('link-'); }).map(([ key, value ]) => { return [ key.substr(5), value ];}));
+const docs = _.fromPairs(_.toPairs(argv).filter(key => { return key.startsWith('link-'); }).map((key, value) => { return [ key.substr(5), value ];}));
 
 logger.configure({
   level: 'info',
@@ -64,16 +64,16 @@ logger.configure({
   ]
 });
 
-var ajv = new Ajv({ allErrors: true, messages:true, schemaId: 'auto', logger: logger });
+const ajv = new Ajv({ allErrors: true, messages:true, schemaId: 'auto', logger: logger });
 logger.info(argv.v);
-if (argv.v === '06'||argv.v === 6) {
+if (argv.v === '06' || argv.v === 6) {
   logger.info('enabling draft-06 support');
   ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-06.json'));
 } else if (argv.v === '04' || argv.v === 4) {
   ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 }
 var schemaPathMap = {};
-var metaElements = {};
+var meta = {};
 var schemaPath = path.resolve(argv.d);
 var outDir = path.resolve(argv.o);
 var schemaDir = argv.x === '-' ? '' : argv.x ? path.resolve(argv.x) : outDir;
@@ -81,22 +81,22 @@ var target = fs.statSync(schemaPath);
 const readme = argv.n !== true;
 const schemaExtension = argv.e || 'schema.json';
 
-if (argv.s){
+if (argv.s) {
   ajv.addMetaSchema(require(path.resolve(argv.s)));
 }
 
 if (argv.m) {
-  if (_.isArray(argv.m)){
-    _.each(argv.m, function(item){
-      var meta=item.split('=');
-      if (meta.length === 2) {
-        metaElements[meta[0]] = meta[1];
+  if (_.isArray(argv.m)) {
+    _.each(argv.m, function(item) {
+      var metaItem = item.split('=');
+      if (metaItem.length === 2) {
+        meta[metaItem[0]] = metaItem[1];
       }
     });
   } else {
-    var meta=(argv.m).split('=');
-    if (meta.length === 2) {
-      metaElements[meta[0]] = meta[1];
+    var metaItem = (argv.m).split('=');
+    if (metaItem.length === 2) {
+      meta[metaItem[0]] = metaItem[1];
     }
   }
 }
@@ -104,25 +104,25 @@ if (argv.m) {
 logger.info('output directory: %s', outDir);
 if (target.isDirectory()) {
   // the ajv json validator will be passed into the main module to help with processing
-  var files=[];
+  var files = [];
   readdirp({ root: schemaPath, fileFilter: `*.${schemaExtension}` })
     .on('data', entry => {
       files.push(entry.fullPath);
       try {
         ajv.addSchema(require(entry.fullPath), entry.fullPath);
-      } catch (e){
+      } catch (e) {
         logger.error('Ajv processing error for schema at path %s', entry.fullPath);
         logger.error(e);
         process.exit(1);
       }
     })
     .on('end', () => {
-      Schema.setAjv(ajv);
-      Schema.setSchemaPathMap(schemaPathMap);
-      return Promise.reduce(files, readSchemaFile, schemaPathMap)
+      Schemas.setAjv(ajv);
+      Schemas.setSchemaPathMap(schemaPathMap);
+      return Promise.reduce(files, readSchemaFiles, schemaPathMap)
         .then(schemaMap => {
           logger.info('finished reading all *.%s files in %s, beginning processing….', schemaExtension, schemaPath);
-          return Schema.process(schemaMap, schemaPath, outDir, schemaDir, metaElements, readme, docs);
+          return Schemas.process(schemaMap, schemaPath, outDir, schemaDir, meta, readme, docs);
         })
         .then(() => {
           logger.info('Processing complete.');
@@ -137,13 +137,13 @@ if (target.isDirectory()) {
       process.exit(1);
     });
 } else {
-  readSchemaFile(schemaPathMap, schemaPath)
+  readSchemaFiles(schemaPathMap, schemaPath)
     .then(schemaMap => {
       ajv.addSchema(require(schemaPath), schemaPath);
-      Schema.setAjv(ajv);
-      Schema.setSchemaPathMap(schemaPathMap);
+      Schemas.setAjv(ajv);
+      Schemas.setSchemaPathMap(schemaPathMap);
       logger.info('finished reading %s, beginning processing...', schemaPath);
-      return Schema.process(schemaMap, schemaPath, outDir, schemaDir, metaElements, false, docs);
+      return Schemas.process(schemaMap, schemaPath, outDir, schemaDir, meta, false, docs);
     })
     .then(() => {
       logger.info('Processing complete.');

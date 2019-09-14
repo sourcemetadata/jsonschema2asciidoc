@@ -11,18 +11,6 @@ https://example.com/schemas/extensible
 
 This is an extensible schema. It has `definitions`, that can be used in other schemas
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Cannot be instantiated
-|Yes
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:extensible.schema.json[extensible.schema.json]
-|===
-
 = Extensible Definitions
 
 |===

@@ -11,18 +11,6 @@ https://example.com/schemas/join
 
 This is an example of a JSON schema with only a join type key. Here a `oneOf'.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:join.schema.json[join.schema.json]
-|===
-
 *One* of the following _conditions_ need to be fulfilled.
 
 ==== Condition 1

@@ -11,18 +11,6 @@ https://example.com/schemas/simpletypes
 
 This is an example schema with examples for multiple types and their constraints.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:simpletypes.schema.json[simpletypes.schema.json]
-|===
-
 = Simple Types Properties
 
 |===

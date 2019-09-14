@@ -11,18 +11,6 @@ https://example.com/schemas/stabilizing
 
 This is a schema which is currently in the `stabilizing` status.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Stabilizing
-|No
-|Forbidden
-|Permitted
-|link:stabilizing.schema.json[stabilizing.schema.json]
-|===
-
 = Stabilizing Properties
 
 |===

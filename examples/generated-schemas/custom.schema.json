@@ -10,7 +10,6 @@
     "title": "Custom",
     "description": "This is an extensible schema. It has `definitions`, that can be used in other schemas. Additionally, it allows custom properties.",
     "type": "object",
-    "meta:extensible": true,
     "definitions": {
         "first": {
             "properties": {

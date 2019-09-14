@@ -11,18 +11,6 @@ https://example.com/schemas/subdir/subdir
 
 A schema in a sub directory
 
-|===
-|link:../../abstract.asciidoc[Abstract] |Extensible |link:../../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|Yes
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:subdir.schema.json[subdir/subdir.schema.json]
-|===
-
 = Subdir Properties
 
 |===

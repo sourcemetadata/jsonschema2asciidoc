@@ -11,24 +11,12 @@ https://example.com/schemas/deepextending
 
 This is an extending schema. It is extending another extending schema. It pulls `definitions` from other schemas.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|Yes
-|Experimental
-|Yes
-|Forbidden
-|Permitted
-|link:deepextending.schema.json[deepextending.schema.json]
-|===
-
 == Schema Hierarchy
 
 * Deeply Extending `https://example.com/schemas/deepextending`
 ** link:extensible.schema.asciidoc[Extensible] `https://example.com/schemas/extensible`
-** link:definitions.schema.asciidoc[Definitions] `https://example.com/schemas/definitions`
-** link:extending.schema.asciidoc[Extending] `https://example.com/schemas/extending`
+*** link:definitions.schema.asciidoc[Definitions] `https://example.com/schemas/definitions`
+*** link:extending.schema.asciidoc[Extending] `https://example.com/schemas/extending`
 
 = Deeply Extending Properties
 

@@ -11,18 +11,6 @@ https://example.com/schemas/complex
 
 This is an example schema that uses types defined in other schemas.
 
-|===
-|link:../abstract.asciidoc[Abstract] |Extensible |link:../status.asciidoc[Status] |Identifiable |Custom Properties |Additional Properties |Defined In
-
-|Can be instantiated
-|No
-|Experimental
-|No
-|Forbidden
-|Permitted
-|link:complex.schema.json[complex.schema.json]
-|===
-
 == Schema Hierarchy
 
 * Complex References `https://example.com/schemas/complex`
