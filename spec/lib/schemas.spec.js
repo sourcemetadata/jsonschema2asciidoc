@@ -15,9 +15,9 @@ describe('schemas module', () => {
       spyOn(fs, 'readFileAsync');
     });
     it('should read a description.asciidoc file based on provided file path and tack it onto a provided schema', done => {
-      var fakeContents = 'IMPORTANT CONTENTS!';
+      const fakeContents = 'IMPORTANT CONTENTS!';
       fs.readFileAsync.and.returnValue(Promise.resolve(fakeContents));
-      var skeem = {};
+      const skeem = {};
       schemas.getDescription('/some/path', skeem)
         .then(returnedSchema => {
           expect(returnedSchema.description).toEqual(fakeContents);

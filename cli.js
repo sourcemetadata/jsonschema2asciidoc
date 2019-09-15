@@ -40,7 +40,6 @@ const argv = require('optimist')
   .alias('v', 'draft')
   .default('v', '07')
   .describe('n', 'Do not generate a README.asciidoc file in the output directory')
-  .describe('link-*', 'Add this file as a link the explain the * attribute, e.g. --link-abstract=abstract.asciidoc')
   .check(function(args) {
     if (!fs.existsSync(args.input)) {
       throw 'Input file "' + args.input + '" does not exist!';
@@ -50,8 +49,6 @@ const argv = require('optimist')
     }
   })
   .argv;
-
-const docs = _.fromPairs(_.toPairs(argv).filter(key => { return key.startsWith('link-'); }).map((key, value) => { return [ key.substr(5), value ];}));
 
 logger.configure({
   level: 'info',
@@ -65,6 +62,7 @@ logger.configure({
 });
 
 const ajv = new Ajv({ allErrors: true, messages:true, schemaId: 'auto', logger: logger });
+Schemas.setAjv(ajv);
 logger.info(argv.v);
 if (argv.v === '06' || argv.v === 6) {
   logger.info('enabling draft-06 support');
@@ -72,12 +70,11 @@ if (argv.v === '06' || argv.v === 6) {
 } else if (argv.v === '04' || argv.v === 4) {
   ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 }
-var schemaPathMap = {};
-var meta = {};
-var schemaPath = path.resolve(argv.d);
-var outDir = path.resolve(argv.o);
-var schemaDir = argv.x === '-' ? '' : argv.x ? path.resolve(argv.x) : outDir;
-var target = fs.statSync(schemaPath);
+const meta = {};
+const schemaPath = path.resolve(argv.d);
+const outDir = path.resolve(argv.o);
+const schemaDir = argv.x === '-' ? '' : argv.x ? path.resolve(argv.x) : outDir;
+const target = fs.statSync(schemaPath);
 const readme = argv.n !== true;
 const schemaExtension = argv.e || 'schema.json';
 
@@ -88,13 +85,13 @@ if (argv.s) {
 if (argv.m) {
   if (_.isArray(argv.m)) {
     _.each(argv.m, function(item) {
-      var metaItem = item.split('=');
+      const metaItem = item.split('=');
       if (metaItem.length === 2) {
         meta[metaItem[0]] = metaItem[1];
       }
     });
   } else {
-    var metaItem = (argv.m).split('=');
+    const metaItem = (argv.m).split('=');
     if (metaItem.length === 2) {
       meta[metaItem[0]] = metaItem[1];
     }
@@ -104,7 +101,7 @@ if (argv.m) {
 logger.info('output directory: %s', outDir);
 if (target.isDirectory()) {
   // the ajv json validator will be passed into the main module to help with processing
-  var files = [];
+  const files = [];
   readdirp({ root: schemaPath, fileFilter: `*.${schemaExtension}` })
     .on('data', entry => {
       files.push(entry.fullPath);
@@ -117,12 +114,10 @@ if (target.isDirectory()) {
       }
     })
     .on('end', () => {
-      Schemas.setAjv(ajv);
-      Schemas.setSchemaPathMap(schemaPathMap);
-      return Promise.reduce(files, readSchemaFiles, schemaPathMap)
-        .then(schemaMap => {
-          logger.info('finished reading all *.%s files in %s, beginning processing….', schemaExtension, schemaPath);
-          return Schemas.process(schemaMap, schemaPath, outDir, schemaDir, meta, readme, docs);
+      return Promise.reduce(files, readSchemaFiles, {})
+        .then(schemaPathsMap => {
+          logger.info('finished reading all *.%s files in %s, beginning processing...', schemaExtension, schemaPath);
+          return Schemas.process(schemaPathsMap, schemaPath, outDir, schemaDir, meta, readme);
         })
         .then(() => {
           logger.info('Processing complete.');
@@ -137,13 +132,11 @@ if (target.isDirectory()) {
       process.exit(1);
     });
 } else {
-  readSchemaFiles(schemaPathMap, schemaPath)
-    .then(schemaMap => {
+  readSchemaFiles({}, schemaPath)
+    .then(schemaPathsMap => {
       ajv.addSchema(require(schemaPath), schemaPath);
-      Schemas.setAjv(ajv);
-      Schemas.setSchemaPathMap(schemaPathMap);
       logger.info('finished reading %s, beginning processing...', schemaPath);
-      return Schemas.process(schemaMap, schemaPath, outDir, schemaDir, meta, false, docs);
+      return Schemas.process(schemaPathsMap, schemaPath, outDir, schemaDir, meta, false);
     })
     .then(() => {
       logger.info('Processing complete.');

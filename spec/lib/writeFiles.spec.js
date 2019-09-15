@@ -15,7 +15,7 @@ describe('writeFiles module', () => {
     });
     it('should invoke ejs.renderFile with the topSchema ejs template', () => {
       asciidocWriter('somefile.schema.json', { '$id': 'myschema', 'my':'schema' }, 'some/path');
-      var renderArgs = ejs.renderFile.calls.argsFor(0);
+      const renderArgs = ejs.renderFile.calls.argsFor(0);
       expect(renderArgs);
     });
   });

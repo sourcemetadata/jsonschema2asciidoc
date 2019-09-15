@@ -47,10 +47,6 @@ describe('Compare results', () => {
       'template=reference',
       '-m',
       'foo=bar',
-      '--link-abstract',
-      'abstract.asciidoc',
-      '--link-status',
-      'status.asciidoc',
       '-v', '06'
     ]);
     ls.on('close', code => {
