@@ -56,8 +56,7 @@ Is <% if (required) { %>*required*<% } else { %>optional<% } %>
 <% _.forEach(schema.refs, ref => {
 * `<% link:<%= ref.$linkPath %>[<%= ref.$linkVal %>]<%=schema.$ref %>`
 <% } %>
-// TODO
-* type: <%= schema.simpletype %><% if (schema.simpletype.match(/\[\]\[\]/) || schema.simpletype === '`array[]`') { %> (nested array)<% } %>
+* type: <%= schema.simpletype %>
 <% if (schema.type === 'array') { -%>
 <%        if (schema.maxItems !== undefined && schema.minItems > 0) { -%>
 * between `<%= schema.minItems %>` and `<%= schema.maxItems %>` items in the array
@@ -142,15 +141,7 @@ this schema
 :leveloffset: -2
 <% }) -%>
 <% } -%>
-<% } else if (schema.type === 'array') { -%>
-
-<% if (schema.items !== undefined && schema.items.type === 'array') { -%>
-Nested array type: `<%= schema.items.simpletype %>`<%= schema.nullable ? ', nullable' : '' %>
-<% } else if (nested === undefined || nested === false) { -%>
-Array type: `<%=schema.simpletype %>`
-<% } -%>
-<% if (schema.items !== undefined) { -%>
-<% if (!(schema.items !== undefined && schema.items.type === 'array')) { -%>
+<% } else if (schema.type === 'array' && schema.items !== undefined) { -%>
 
 All items must be of the type:
 
@@ -187,39 +178,39 @@ All items must be of the type:
 
 <% switch (schema.format) { -%>
 <%        case 'date-time': -%>
-* format: `date-time` – date and time (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
+* format: `date-time` ï¿½ date and time (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
 <% break; case 'date': -%>
-* format: `date` – date, without time (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
+* format: `date` ï¿½ date, without time (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
 <% break; case 'time': -%>
-* format: `time` – time, without date (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
+* format: `time` ï¿½ time, without date (according to https://tools.ietf.org/html/rfc3339#section-5.6[RFC 3339, section 5.6])
 <% break; case 'email': -%>
-* format: `email` – email address (according to https://tools.ietf.org/html/rfc5322#section-3.4.1[RFC 5322, section 3.4.1])
+* format: `email` ï¿½ email address (according to https://tools.ietf.org/html/rfc5322#section-3.4.1[RFC 5322, section 3.4.1])
 <% break; case 'idn-email': -%>
-* format: `idn-email` – international email address (according to https://tools.ietf.org/html/rfc6531[RFC 6531])
+* format: `idn-email` ï¿½ international email address (according to https://tools.ietf.org/html/rfc6531[RFC 6531])
 <% break; case 'hostname': -%>
-* format: `hostname` – Domain Name (according to https://tools.ietf.org/html/rfc1034#section-3.1[RFC 1034, section 3.1])
+* format: `hostname` ï¿½ Domain Name (according to https://tools.ietf.org/html/rfc1034#section-3.1[RFC 1034, section 3.1])
 <% break; case 'idn-hostname': -%>
-* format: `idn-hostname` – Internationalized Domain Name (according to https://tools.ietf.org/html/rfc5890#section-2.3.2.3[RFC 5890, section 2.3.2.3])
+* format: `idn-hostname` ï¿½ Internationalized Domain Name (according to https://tools.ietf.org/html/rfc5890#section-2.3.2.3[RFC 5890, section 2.3.2.3])
 <% break; case 'ipv4': -%>
-* format: `ipv4` – IP (v4) address (according to https://tools.ietf.org/html/rfc2673[RFC 2673, section 3.2])
+* format: `ipv4` ï¿½ IP (v4) address (according to https://tools.ietf.org/html/rfc2673[RFC 2673, section 3.2])
 <% break; case 'ipv6': -%>
-* format: `ipv6` – IP (v6) address (according to https://tools.ietf.org/html/rfc4291[RFC 4291, section 2.2])
+* format: `ipv6` ï¿½ IP (v6) address (according to https://tools.ietf.org/html/rfc4291[RFC 4291, section 2.2])
 <%        case 'uri': -%>
-* format: `uri` – Uniformous Resource Identifier (according to https://tools.ietf.org/html/rfc3986[RFC 3986])
+* format: `uri` ï¿½ Uniformous Resource Identifier (according to https://tools.ietf.org/html/rfc3986[RFC 3986])
 <% break; case 'uri-reference': -%>
-* format: `uri-reference` – URI Reference (according to https://tools.ietf.org/html/rfc3986[RFC 3986])
+* format: `uri-reference` ï¿½ URI Reference (according to https://tools.ietf.org/html/rfc3986[RFC 3986])
 <% break; case 'iri': -%>
-* format: `iri` – Internationalized Resource Identifier (according to https://tools.ietf.org/html/rfc3987[RFC 3987])
+* format: `iri` ï¿½ Internationalized Resource Identifier (according to https://tools.ietf.org/html/rfc3987[RFC 3987])
 <% break; case 'iri-reference': -%>
-* format: `iri-reference` – IRI Reference (according to https://tools.ietf.org/html/rfc3987[RFC 3987])
+* format: `iri-reference` ï¿½ IRI Reference (according to https://tools.ietf.org/html/rfc3987[RFC 3987])
 <% break; case 'uri-template': -%>
-* format: `uri-template` – URI Template (according to https://tools.ietf.org/html/rfc6570[RFC 6570])
+* format: `uri-template` ï¿½ URI Template (according to https://tools.ietf.org/html/rfc6570[RFC 6570])
 <% break; case 'json-pointer': -%>
-* format: `json-pointer` – JSON Pointer (according to https://tools.ietf.org/html/rfc6901#section-5[RFC 6901, section 5])
+* format: `json-pointer` ï¿½ JSON Pointer (according to https://tools.ietf.org/html/rfc6901#section-5[RFC 6901, section 5])
 <% break; case 'relative-json-pointer': -%>
-* format: `relative-json-pointer` – Relative JSON Pointer (according to https://tools.ietf.org/html/draft-handrews-relative-json-pointer-01[Relative JSON Pointer])
+* format: `relative-json-pointer` ï¿½ Relative JSON Pointer (according to https://tools.ietf.org/html/draft-handrews-relative-json-pointer-01[Relative JSON Pointer])
 <% break; case 'regex': -%>
-* format: `regex` – Regular Expression (according to https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf[ECMA 262])
+* format: `regex` ï¿½ Regular Expression (according to https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf[ECMA 262])
 <% } -%>
 <% if (schema.minLength > 0) { -%>
 * minimum length: <%= schema.minLength %> characters

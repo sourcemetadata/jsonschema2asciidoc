@@ -1,5 +1,6 @@
 {
   "env": {
+    "commonjs": true,
     "node": true,
     "es6": true,
     "jasmine": true
@@ -21,7 +22,7 @@
     "no-mixed-spaces-and-tabs": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": "warn",
-    "no-use-before-define": ["error", "nofunc"],
+    "no-use-before-define": ["warn", { "functions": true, "classes": false } ],
     "no-undef": "error",
     "object-curly-spacing": ["error", "always"],
     "quotes": ["error", "single", { "avoidEscape": true }],

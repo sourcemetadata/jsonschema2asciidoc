@@ -44,6 +44,15 @@ $ jsonschema2asciidoc -d examples/schemas -o examples/docs -v 04
 $ jsonschema2asciidoc -d examples/schemas -o examples/docs -v 06
 ```
 
+## Not Supported Features
+
+Currently the following JSON Schema keywords and features are not supported:
+
+* `dependencies`
+* `additionalProperties`
+* `propertyNames`
+* array in `items`
+
 ## Using JSON Schema Asciidoc Tools from `npm`
 
 You can conveniently use the JSON Schema Asciidoc Tools from `npm`. This makes it possible to set up a conversion toolchain for your JSON Schema project that is driven entirely by `npm`. To do so, first define the dependency by adding this to your `"devDependencies"` section of `package.json`

@@ -40,7 +40,7 @@ const argv = require('optimist')
   .alias('v', 'draft')
   .default('v', '07')
   .describe('n', 'Do not generate a README.asciidoc file in the output directory')
-  .check(function(args) {
+  .check(args => {
     if (!fs.existsSync(args.input)) {
       throw 'Input file "' + args.input + '" does not exist!';
     }
@@ -84,7 +84,7 @@ if (argv.s) {
 
 if (argv.m) {
   if (_.isArray(argv.m)) {
-    _.each(argv.m, function(item) {
+    _.each(argv.m, item => {
       const metaItem = item.split('=');
       if (metaItem.length === 2) {
         meta[metaItem[0]] = metaItem[1];
@@ -115,9 +115,9 @@ if (target.isDirectory()) {
     })
     .on('end', () => {
       return Promise.reduce(files, readSchemaFiles, {})
-        .then(schemaPathsMap => {
+        .then(schemas => {
           logger.info('finished reading all *.%s files in %s, beginning processing...', schemaExtension, schemaPath);
-          return Schemas.process(schemaPathsMap, schemaPath, outDir, schemaDir, meta, readme);
+          return Schemas.process(schemas, schemaPath, outDir, schemaDir, meta, readme);
         })
         .then(() => {
           logger.info('Processing complete.');
@@ -133,10 +133,10 @@ if (target.isDirectory()) {
     });
 } else {
   readSchemaFiles({}, schemaPath)
-    .then(schemaPathsMap => {
+    .then(schemas => {
       ajv.addSchema(require(schemaPath), schemaPath);
       logger.info('finished reading %s, beginning processing...', schemaPath);
-      return Schemas.process(schemaPathsMap, schemaPath, outDir, schemaDir, meta, false);
+      return Schemas.process(schemas, schemaPath, outDir, schemaDir, meta, false);
     })
     .then(() => {
       logger.info('Processing complete.');
