@@ -7,24 +7,59 @@
 
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs'));
-const schemas = require('../../lib/schemas');
+const Schemas = require('../../lib/schemas');
+const logger = require('winston');
+const NullTransport = require('winston-null');
+
+logger.add(new NullTransport.NullTransport());
 
 describe('schemas module', () => {
-  describe('getDescription method', () => {
+  describe('readSchemaFiles method', () => {
+    const fakePath = 'some/path';
+    const schemas = new Schemas();
     beforeEach(() => {
-      spyOn(fs, 'readFileAsync');
+      spyOn(fs, 'readFileAsync').and.returnValue(Promise.resolve('{"schema":"yes"}'));
     });
-    it('should read a description.asciidoc file based on provided file path and tack it onto a provided schema', done => {
-      const fakeContents = 'IMPORTANT CONTENTS!';
-      fs.readFileAsync.and.returnValue(Promise.resolve(fakeContents));
-      const skeem = {};
-      schemas.getDescription('/some/path', skeem)
-        .then(returnedSchema => {
-          expect(returnedSchema.description).toEqual(fakeContents);
-          expect(skeem.description).toEqual(fakeContents);
-        }).catch(() => {
-          fail('unexpected error invoked!');
-        }).done(done);
+    describe('reading schema files without an $id key', () => {
+      beforeEach(() => {
+        spyOn(logger, 'warn').and.callThrough();
+      });
+      it('should return a schema path map with path to the file as a key, and object value with path and json schema', done => {
+        schemas.readSchemaFiles({}, fakePath)
+          .then(map => {
+            expect(map[fakePath]).toBeDefined();
+            expect(map[fakePath].filePath).toEqual(fakePath);
+            expect(map[fakePath].jsonSchema).toEqual({ schema:'yes' });
+            expect(logger.warn.calls.allArgs()).toEqual([ [ 'schema ' + fakePath + ' has no $id' ] ]);
+          })
+          .catch(fail)
+          .done(done);
+      });
+    });
+    describe('reading schema files with an $id key', () => {
+      beforeEach(() => {
+        fs.readFileAsync.and.returnValue(Promise.resolve('{"$id":"allyourbase"}'));
+      });
+      it('should return a schema path map with $id value as a key, and object value with path and json schema', done => {
+        schemas.readSchemaFiles({}, fakePath)
+          .then(map => {
+            expect(map['allyourbase']).toBeDefined();
+            expect(map['allyourbase'].filePath).toEqual(fakePath);
+            expect(map['allyourbase'].jsonSchema).toEqual({ $id:'allyourbase' });
+          })
+          .catch(fail)
+          .done(done);
+      });
+      it('should not overwrite the value for an existing $id key in the schema path map', done => {
+        schemas.readSchemaFiles({ allyourbase:{} }, fakePath)
+          .then(map => {
+            expect(map['allyourbase']).toBeDefined();
+            expect(map['allyourbase'].filePath).not.toBeDefined();
+            expect(map['allyourbase'].jsonSchema).not.toBeDefined();
+          })
+          .catch(fail)
+          .done(done);
+      });
     });
   });
 });

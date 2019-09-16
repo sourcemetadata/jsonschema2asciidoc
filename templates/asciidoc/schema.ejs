@@ -6,10 +6,15 @@
  */ -%>
 
 [[<% path %>]]
-<% title = title ?: schema.title -%>
-<% if (title) { -%>
+<% if (title || schema.title) { -%>
+<% let subtitle;
+if (title) {
+  subtitle = schema.title;
+} else {
+  title = schema.title;
+} -%>
 
-= <%= title %>
+= <%= title %><%= (subtitle ? ': ' + subtitle : '') %>
 <% } -%>
 ....
 <%= schema.$id || path %>
